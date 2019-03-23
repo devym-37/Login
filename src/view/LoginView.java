@@ -14,13 +14,14 @@ public class LoginView {
         String id = null;
         String password = null;
 
-        System.out.print("ID : ");
-        id = scanner.nextLine();
+            System.out.print("ID : ");
+            id = scanner.nextLine();
 
-        System.out.println("PWD : ");
-        password = scanner.nextLine();
+            System.out.print("PWD : ");
+            password = scanner.nextLine();
 
-        userService.saveUser(id, password);
+            userService.saveUser(id, password);
+
     }
 
 }
