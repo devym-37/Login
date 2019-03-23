@@ -4,14 +4,14 @@ import DB.LocalDB;
 import front.frontView;
 import model.UserModel;
 import repository.UserRepository;
-import view.LoginView;
+import view.RegisterView;
 
-public class FilterUser extends LoginView {
+public class FilterUser extends RegisterView {
     UserRepository userRepository = new UserRepository();
-    LoginView registerUser = new LoginView();
+    RegisterView registerUser = new RegisterView();
     UserModel userModel = new UserModel();
     frontView frontView = new frontView();
-    LoginView loginView = new LoginView();
+    RegisterView loginView = new RegisterView();
 
     public void getUserRepository() {
         loginView.registerView();

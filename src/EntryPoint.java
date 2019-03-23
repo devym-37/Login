@@ -1,6 +1,8 @@
+import DB.LocalDB;
 import front.frontView;
+import model.UserModel;
 import service.FilterUser;
-import view.LoginView;
+import view.RegisterView;
 import java.util.Scanner;
 
 
@@ -8,9 +10,17 @@ public class EntryPoint {
 
     public static void main(String[] args) {
 
-        LoginView loginView = new LoginView();
+        RegisterView loginView = new RegisterView();
         frontView frontView = new frontView();
         FilterUser filterUser = new FilterUser();
+
+        UserModel userModel = new UserModel();
+        userModel.setId("miniyoung37");
+        userModel.setPassword("123");
+
+        LocalDB.userlist.add(userModel);
+        RegisterView registerView = new RegisterView();
+        registerView.registerView();
 
         int menu_num = 0;
         boolean loop = true;
@@ -43,13 +53,6 @@ public class EntryPoint {
         }
 
         // loginView.registerView();
-
-
-
-
-
-
-
     }
 
 }
