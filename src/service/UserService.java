@@ -16,7 +16,7 @@ import java.util.List;
 public class UserService {
     UserRepository userRepository = new UserRepository();
 
-    public int saveUser(String id, String password){
+    public int saveUser(String id, String password, String name, String email){
 
         List<UserModel> check_List = userRepository.findAll();      // 1
         for(UserModel model : check_List){                          // 2
@@ -24,7 +24,7 @@ public class UserService {
                 return -1;                                          // 값만 반환하고 기능 정지
             }
         }
-        UserModel newUser = new UserModel(id, password);            // 3
+        UserModel newUser = new UserModel(id, password, name, email);            // 3
         userRepository.saveUser(newUser);
 
         return 1;                                                   // 4
@@ -48,4 +48,19 @@ public class UserService {
         }
         return result;// 4. 결과값 반환
     }
+
+    public int findUser(String name, String email){
+        int result = 0;         // 0 : 동일한 이름과 email없음 1: id / pwd 반환
+        // 1. userList를 가져온다.
+        List<UserModel> findUser = userRepository.findAll();
+        // 2. userList를 돌며, 이름과 email 확인
+        for (UserModel model : findUser) {
+            if(name.equals(model.getName()) && email.equals(model.getEmail())){
+                result = 1;
+                return result;                  // id / pwd 반환
+            }
+        }
+        // 3. 똑같은 이름과 email이 있으면 id / pwd 반환환
+        return result;                      // 입력받은 이름과 email 데이터 없음
+   }
 }
