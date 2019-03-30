@@ -2,7 +2,7 @@ package front;
 
 public class FrontView {
 
-    public void frontDesign(){
+    public static void frontDesign(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                          1. Login                                │");
@@ -14,7 +14,7 @@ public class FrontView {
 
     }
 
-    public void reg_afterfront(){
+    public static void reg_afterfront(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                          1. Login                                │");
@@ -27,14 +27,14 @@ public class FrontView {
 
 
 
-    public void login_front(){
+    public static void login_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                     !!   ID & PWD input  !!                      │");
         System.out.println("└─────────────────────────────────┘");
 
     }
-    public void register_front(){
+    public static void register_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                     !!  ID & PWD register  !!                    │");
@@ -42,7 +42,7 @@ public class FrontView {
 
     }
 
-    public void find_front(){
+    public static void find_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                        !!  Find ID & PWD  !!                     │");
@@ -50,7 +50,7 @@ public class FrontView {
 
     }
 
-    public void Off_front(){
+    public static void Off_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                 !!  Program Off - Good Bye  !!                  │");
@@ -58,7 +58,7 @@ public class FrontView {
 
     }
 
-    public void error_front(){
+    public static void error_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                    !!  Select Number Error  !!                  │");
@@ -66,7 +66,7 @@ public class FrontView {
 
     }
 
-    public void complete_front(){
+    public static void complete_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                      !!  Become a Member  !!                    │");
@@ -74,7 +74,7 @@ public class FrontView {
 
     }
 
-    public void existing_front(){
+    public static void existing_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                   !!  Already existing ID  !!                   │");
@@ -82,7 +82,7 @@ public class FrontView {
 
     }
 
-    public void pwderror_front(){
+    public static void pwderror_front(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                            PWD Error!!                           │");
@@ -90,7 +90,7 @@ public class FrontView {
 
     }
 
-    public void success_login(){
+    public static void success_login(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                        !!  Login Success  !!                     │");
@@ -98,11 +98,27 @@ public class FrontView {
 
     }
 
-    public void nonId_login(){
+    public static void nonId_login(){
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                       !!  Not existing ID  !!                    │");
         System.out.println("│                       --> Register ID & PWD                      │");
+        System.out.println("└─────────────────────────────────┘");
+
+    }
+
+    public static void nonName_login(){
+
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│                 !!  Not existing Name / E-mail  !!               │");
+        System.out.println("└─────────────────────────────────┘");
+
+    }
+
+    public static void existIDPWD(){
+
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│                   !!  Here is your ID and Pwd.  !!               │");
         System.out.println("└─────────────────────────────────┘");
 
     }

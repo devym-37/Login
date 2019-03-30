@@ -1,6 +1,7 @@
 package repository;
 
 import DB.LocalDB;
+import model.BookModel;
 import model.UserModel;
 import java.util.List;
 
@@ -13,8 +14,15 @@ public class UserRepository {
         LocalDB.userlist.add(userModel);
         return 0;
     }
+    public int saveBook(BookModel bookModel){
+        LocalDB.booklist.add(bookModel);
+        return 0;
+    }
+
     public List<UserModel> findAll(){           // List<UserModel> 반환해야할 정보 List
         return LocalDB.userlist;
     }
+    public List<BookModel> findbook(){ return LocalDB.booklist; }           // List<booklist> 반환해야할 정보 List
+
 
 }

@@ -1,16 +1,14 @@
 package view;
 
-import front.ModuleView;
 import front.FrontView;
+import repository.UserRepository;
 import service.UserService;
 
 import java.util.Scanner;
 
 public class RegisterView {
-
+    UserRepository userRepository = new UserRepository();
     UserService userService = new UserService();
-    FrontView frontView = new FrontView();
-    ModuleView moduleView = new ModuleView();
 
     public void registerView() {
         Scanner scanner = new Scanner(System.in);
@@ -36,11 +34,11 @@ public class RegisterView {
         // 3. 중복된 아이디가 없으면 로그인 화면으로 이동
         int response = userService.saveUser(id, password, name, email);          // 1
         if (response == -1) {                                         // 2
-            frontView.existing_front();
+            FrontView.existing_front();
         }
         if (response == 1) {                                          // 3
-            frontView.complete_front();
-            moduleView.register_pro();
+            FrontView.complete_front();
+            ModuleView.register_pro();
 
         }
 
@@ -62,20 +60,20 @@ public class RegisterView {
         int response = userService.login(id, password);
         switch (response) {
             case 0:
-                frontView.nonId_login(); // id 없음
-                frontView.register_front();    // register 화면 출력
+                FrontView.nonId_login(); // id 없음
+                FrontView.register_front();    // register 화면 출력
                 break;
             case 1:
-                frontView.pwderror_front(); // 비밀번호 틀림
-                frontView.login_front();    // login화면 재출력
+                FrontView.pwderror_front(); // 비밀번호 틀림
                 break;
             case 2:
-                frontView.success_login();  // login 성공
+                FrontView.success_login();  // login 성공
                 break;
         }
     }
 
     public void find_User(){
+
         Scanner scanner = new Scanner(System.in);
 
         String name = null;
@@ -88,6 +86,13 @@ public class RegisterView {
         email = scanner.nextLine();
 
         int findUser = userService.findUser(name, email);
+        switch (findUser){
+            case 0:
+                FrontView.nonName_login();// 동일한 id/email 없음
+                break;
+            case 1:             // id/pwd 반환
+                break;
+        }
 
     }
 

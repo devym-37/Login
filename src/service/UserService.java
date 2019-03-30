@@ -1,6 +1,7 @@
 package service;
 
 
+import front.FrontView;
 import model.UserModel;
 import repository.UserRepository;
 
@@ -54,9 +55,16 @@ public class UserService {
         // 1. userList를 가져온다.
         List<UserModel> findUser = userRepository.findAll();
         // 2. userList를 돌며, 이름과 email 확인
+        String ID = null;
+        String Pwd = null;
         for (UserModel model : findUser) {
             if(name.equals(model.getName()) && email.equals(model.getEmail())){
                 result = 1;
+                ID = model.getId();
+                Pwd = model.getPassword();
+                FrontView.existIDPWD();
+                System.out.println("Your ID : " + ID);
+                System.out.println("Your Password : " + Pwd);
                 return result;                  // id / pwd 반환
             }
         }
