@@ -53,7 +53,7 @@ public class FrontView {
     public static void Off_front(){
 
         System.out.println("┌─────────────────────────────────┐");
-        System.out.println("│                 !!  Program Off - Good Bye  !!                  │");
+        System.out.println("│                 !!  Program Off - Good Bye  !!                   │");
         System.out.println("└─────────────────────────────────┘");
 
     }
@@ -61,7 +61,7 @@ public class FrontView {
     public static void error_front(){
 
         System.out.println("┌─────────────────────────────────┐");
-        System.out.println("│                    !!  Select Number Error  !!                  │");
+        System.out.println("│                    !!  Select Number Error  !!                   │");
         System.out.println("└─────────────────────────────────┘");
 
     }
@@ -69,15 +69,31 @@ public class FrontView {
     public static void complete_front(){
 
         System.out.println("┌─────────────────────────────────┐");
-        System.out.println("│                      !!  Become a Member  !!                    │");
+        System.out.println("│                      !!  Become a Member  !!                     │");
         System.out.println("└─────────────────────────────────┘");
 
     }
 
-    public static void existing_front(){
+    public static void existing_ID(){
 
         System.out.println("┌─────────────────────────────────┐");
-        System.out.println("│                   !!  Already existing ID  !!                   │");
+        System.out.println("│                   !!  Already existing ID  !!                    │");
+        System.out.println("└─────────────────────────────────┘");
+
+    }
+
+    public static void existing_name(){
+
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│                  !!  Already existing Name  !!                   │");
+        System.out.println("└─────────────────────────────────┘");
+
+    }
+
+    public static void existing_email(){
+
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│                 !!  Already existing E-mail  !!                  │");
         System.out.println("└─────────────────────────────────┘");
 
     }
@@ -102,7 +118,7 @@ public class FrontView {
 
         System.out.println("┌─────────────────────────────────┐");
         System.out.println("│                       !!  Not existing ID  !!                    │");
-        System.out.println("│                       --> Register ID & PWD                      │");
+        System.out.println("│                       --> Register ID                            │");
         System.out.println("└─────────────────────────────────┘");
 
     }
@@ -123,6 +139,29 @@ public class FrontView {
 
     }
 
+    public static void NonremoveID(){
+
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│                 !!  There is no such information  !!             │");
+        System.out.println("└─────────────────────────────────┘");
+
+    }
+
+    public static void removefront(){
+
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│           !!  Enter the member information to delete  !!         │");
+        System.out.println("└─────────────────────────────────┘");
+
+    }
+
+    public static void removeData(){
+
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│               !!  Delete the entered information  !!             │");
+        System.out.println("└─────────────────────────────────┘");
+
+    }
 
 
 }

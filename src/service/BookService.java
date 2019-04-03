@@ -1,5 +1,6 @@
 package service;
 
+import front.PageView;
 import model.BookModel;
 import repository.UserRepository;
 
@@ -19,6 +20,66 @@ public class BookService {
 
         return 1;
     }
+
+    public int search_writer(String writer){          // 책 검색
+        List<BookModel> check_book = BookRepository.findbook();
+        int result = 0;                 // 0 : 책 없음, 1 : 책 있음, 2 : 책 대여중
+
+        String Writer = null;
+        String Bookname = null;
+        String state = "On loan";
+        for (BookModel booklist : check_book) {
+            if(writer.equals(booklist.getWriter())){
+                Writer = booklist.getWriter();
+                Bookname = booklist.getBookName();
+                System.out.println("┌─────────────────────────────────────────────────────────────┐");
+                System.out.println("│\t\t\t\t\t\t\t\t\t\t\tIt's a book in our library\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+                System.out.println("└─────────────────────────────────────────────────────────────┘");
+                System.out.print("\t\t\t\t\t\tWriter : " + Writer);
+                System.out.println("\t\t\tBook Name : " + Bookname);
+                result = 1;
+                return result;
+            }else if(writer.equals(booklist.getWriter()) && state.equals(booklist.getState())) {
+                PageView.rentpage4();
+                result = 2;
+                return result;
+            }
+        }
+        return result;
+    }
+
+    public int search_bookname(String bookname){          // 책 검색
+        List<BookModel> check_book = BookRepository.findbook();
+        int result = 0;                 // 0 : 책 없음, 1 : 책 있음, 2 : 책 대여중
+        String Writer = null;
+        String Bookname = null;
+        String state = "On loan";
+        for (BookModel booklist : check_book) {
+            if(bookname.equals(booklist.getBookName())){
+                if(state.equals(booklist.getState())){
+                    PageView.rentpage4();
+                    result = 2;
+                    return result;
+                }
+                Writer = booklist.getWriter();
+                Bookname = booklist.getBookName();
+
+                System.out.println("┌─────────────────────────────────────────────────────────────┐");
+                System.out.println("│\t\t\t\t\t\t\t\t\t\t\tIt's a book in our library\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+                System.out.println("└─────────────────────────────────────────────────────────────┘");
+                System.out.print("\t\t\t\t\t\tWriter : " + Writer);
+                System.out.println("\t\t\tBook Name : " + Bookname);
+
+                PageView.rentpage2();
+                result = 1;
+                return result;
+            }
+        }
+        return result;
+    }
+
+
+    // 대여 / 반납 기능
 
 
 

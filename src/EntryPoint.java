@@ -13,7 +13,7 @@ public class EntryPoint {
             String[] Name = {"thor", "spiderman", "ironman", "hulk", "thanos"};
             String[] Email = {"thor@naver.com", "spiderman@naver.com", "ironman@naver.com", "hulk@naver.com", "thanos@naver.com"};
             String[] Id = {"thor", "spiderman", "ironman", "hulk", "thanos"};
-            String[] Password = {"thor1234", "spiderman1234", "ironman1234", "hulk1234", "thanos1234"};
+            String[] Password = {"thor123", "spiderman123", "ironman123", "hulk123", "thanos123"};
             user.setName(Name[i]);
             user.setEmail(Email[i]);
             user.setId(Id[i]);
@@ -36,8 +36,7 @@ public class EntryPoint {
             LocalDB.booklist.add(book);
         }
 
-        ModuleView.execute_program();
-
+        ModuleView.execute_program();               // 실행
 
     }
 

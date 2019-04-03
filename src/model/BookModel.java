@@ -18,6 +18,7 @@ public class BookModel {
         this.State = State;
     }
 
+
     public String getWriter() { return Writer; }
 
     public void setWriter(String writer) { Writer = writer; }

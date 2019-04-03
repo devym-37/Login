@@ -5,6 +5,7 @@ import front.FrontView;
 import model.UserModel;
 import repository.UserRepository;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -22,13 +23,17 @@ public class UserService {
         List<UserModel> check_List = userRepository.findAll();      // 1
         for(UserModel model : check_List){                          // 2
             if(id.equals(model.getId())){
-                return -1;                                          // 값만 반환하고 기능 정지
+                return 1;                                          // 값만 반환하고 기능 정지
+            }else if(name.equals(model.getEmail())){
+                return 2;
+            }else if(email.equals(model.getEmail())){
+                return 3;
             }
         }
         UserModel newUser = new UserModel(id, password, name, email);            // 3
         userRepository.saveUser(newUser);
 
-        return 1;                                                   // 4
+        return 0;                                                   // 4
     }
 
     public int login(String id, String password){
@@ -71,4 +76,27 @@ public class UserService {
         // 3. 똑같은 이름과 email이 있으면 id / pwd 반환환
         return result;                      // 입력받은 이름과 email 데이터 없음
    }
+
+   public int removeUser(String name, String id, String password){
+        int result = 0;         // 0 : 입력한 내용의 data가 없음
+       List<UserModel> removeUser = userRepository.findAll();
+       Iterator<UserModel> itUser = removeUser.iterator();
+       String Name = null;
+       String Id = null;
+       String Pwd = null;
+       Name = name;
+       Id = id;
+       Pwd = password;
+       while (itUser.hasNext()){
+           Object value = itUser.next();
+           if(Name.equals(((UserModel) value).getName()) && Id.equals(((UserModel) value).getId()) && Pwd.equals(((UserModel) value).getPassword())){
+               result = 1;          // 1 : date delete
+               itUser.remove();
+               return result;
+           }
+       }
+       return result;               // result = 0;
+   }
+
+
 }
