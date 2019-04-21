@@ -88,8 +88,8 @@ public class UserService {
        Id = id;
        Pwd = password;
        while (itUser.hasNext()){
-           Object value = itUser.next();
-           if(Name.equals(((UserModel) value).getName()) && Id.equals(((UserModel) value).getId()) && Pwd.equals(((UserModel) value).getPassword())){
+           UserModel value = itUser.next();
+           if(Name.equals(value.getName()) && Id.equals(value.getId()) && Pwd.equals(value.getPassword())){
                result = 1;          // 1 : date delete
                itUser.remove();
                return result;

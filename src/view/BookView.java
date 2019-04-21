@@ -34,7 +34,7 @@ public class BookView {
                 ((BookModel) list2).getWriter(), ((BookModel) list2).getBookName(), ((BookModel) list2).getIsbn());
         System.out.printf("|\t\t  %s\t\t\t\t\t%s \t\t\t\t\t\t\t  %s\t\t\t|%n",
                 ((BookModel) list3).getWriter(), ((BookModel) list3).getBookName(), ((BookModel) list3).getIsbn());
-        System.out.printf("|\t\t  %s\t\t\t\t\t%s\t\t\t\t\t\t\t\t\t\t\t  %s\t\t\t|%n",
+        System.out.printf("|\t\t  %s\t\t\t\t\t%s\t\t\t\t\t\t\t\t\t\t\t\t  %s\t\t\t|%n",
                 ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getIsbn());
 
     }
@@ -74,7 +74,7 @@ public class BookView {
                     ((BookModel) list3).getWriter(), ((BookModel) list3).getBookName(), ((BookModel) list3).getAmount());
         }
         if (state.equals(((BookModel) list4).getState())) {
-            System.out.printf("|\t\t  %s\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
+            System.out.printf("|\t\t  %s\t\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
                     ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getAmount());
         }
 

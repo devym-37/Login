@@ -10,6 +10,7 @@ public class ModuleView {
 
     public static void execute_program() {
         RegisterView registerView = new RegisterView();
+        BookView bookView = new BookView();
         int menu_num = 0;
         boolean loop = true;
 
@@ -19,6 +20,10 @@ public class ModuleView {
             System.out.print("Select Number : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
+                case 0:
+                    bookView.currentBookView();
+                    register_pro();
+                    break;
                 case 1:
                     FrontView.login_front();
                     registerView.login_View();

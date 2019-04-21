@@ -29,7 +29,7 @@ public class BookService {
         String Bookname = null;
         String state = "On loan";
         for (BookModel booklist : check_book) {
-            if(writer.equals(booklist.getWriter())){
+            if(writer.equalsIgnoreCase(booklist.getWriter())){
                 if(state.equals(booklist.getState())){
                     PageView.rentpage4();
                     result = 2;
@@ -57,7 +57,7 @@ public class BookService {
         String Bookname = null;
         String state = "On loan";
         for (BookModel booklist : check_book) {
-            if(bookname.equals(booklist.getBookName())){
+            if(bookname.equalsIgnoreCase(booklist.getBookName())){
                 if(state.equals(booklist.getState())){
                     PageView.rentpage4();
                     result = 2;

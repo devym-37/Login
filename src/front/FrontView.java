@@ -5,6 +5,7 @@ public class FrontView {
     public static void frontDesign(){
 
         System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│                          0. Book List                            │");
         System.out.println("│                          1. Login                                │");
         System.out.println("│                          2. Register                             │");
         System.out.println("│                          3. Find ID/PWD                          │");

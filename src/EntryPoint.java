@@ -24,11 +24,11 @@ public class EntryPoint {
 
         for(int i = 0; i < 5; i++){
             BookModel book = new BookModel();
-            String[] Writer = {"최승필", "나태주", "오프라 윈프리", "야마구치 슈", "제임스 클리어"};
-            String[] BookName = {"공부머리 독서법", "가장 예쁜 생각을 너에게 주고 싶다", "내가 확실히 아는 것들", "철학은 어떻게 삶의 무기가 되는가", "아주 작은 습관의 힘"};
+            String[] Writer = {"최승필", "나태주", "Oprah Winfrey", "야마구치 슈", "James Clear"};
+            String[] BookName = {"공부머리 독서법", "가장 예쁜 생각을 너에게 주고 싶다", "내가 확실히 아는 것들", "철학은 어떻게 삶의 무기가 되는가", "ATOMIC HABITS"};
             String[] Isbn = {"9791196316808", "9788925561820", "9788956058054", "9791130620459", "9791162540640"};
             String[] Amount = {"1", "1", "1", "1", "1"};
-            String[] State = {"Rentable", "Rentable", "On loan", "Rentable", "On loan"};
+            String[] State = {"Rentable", "On loan", "Rentable", "On loan", "Rentable"};
             book.setWriter(Writer[i]);
             book.setBookName(BookName[i]);
             book.setIsbn(Isbn[i]);
@@ -38,8 +38,11 @@ public class EntryPoint {
         }
 
 
-        BookView bookView = new BookView();
 
+
+        BookView bookView = new BookView();
+        // bookView.currentBookView();
+        // bookView.rentalList();
 
         ModuleView.execute_program();               // 실행
 
