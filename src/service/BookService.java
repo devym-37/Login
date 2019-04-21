@@ -30,18 +30,20 @@ public class BookService {
         String state = "On loan";
         for (BookModel booklist : check_book) {
             if(writer.equals(booklist.getWriter())){
+                if(state.equals(booklist.getState())){
+                    PageView.rentpage4();
+                    result = 2;
+                    return result;
+                }
                 Writer = booklist.getWriter();
                 Bookname = booklist.getBookName();
                 System.out.println("┌─────────────────────────────────────────────────────────────┐");
                 System.out.println("│\t\t\t\t\t\t\t\t\t\t\tIt's a book in our library\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
                 System.out.println("└─────────────────────────────────────────────────────────────┘");
-                System.out.print("\t\t\t\t\t\tWriter : " + Writer);
+                System.out.print("\t\t\t\t\t\t\t\t\t\tWriter : " + Writer);
                 System.out.println("\t\t\tBook Name : " + Bookname);
+
                 result = 1;
-                return result;
-            }else if(writer.equals(booklist.getWriter()) && state.equals(booklist.getState())) {
-                PageView.rentpage4();
-                result = 2;
                 return result;
             }
         }
@@ -67,10 +69,9 @@ public class BookService {
                 System.out.println("┌─────────────────────────────────────────────────────────────┐");
                 System.out.println("│\t\t\t\t\t\t\t\t\t\t\tIt's a book in our library\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
                 System.out.println("└─────────────────────────────────────────────────────────────┘");
-                System.out.print("\t\t\t\t\t\tWriter : " + Writer);
+                System.out.print("\t\t\t\t\t\t\t\t\t\tWriter : " + Writer);
                 System.out.println("\t\t\tBook Name : " + Bookname);
 
-                PageView.rentpage2();
                 result = 1;
                 return result;
             }
@@ -78,7 +79,9 @@ public class BookService {
         return result;
     }
 
+    public void rentalBook(){
 
+    }
     // 대여 / 반납 기능
 
 

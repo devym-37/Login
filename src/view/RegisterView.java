@@ -73,7 +73,6 @@ public class RegisterView {
                 break;
             case 2:
                 FrontView.success_login();  // login 성공
-                moduleView.bookrent();
                 break;
         }
     }
