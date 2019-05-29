@@ -80,6 +80,47 @@ public class BookView {
 
     }
 
+    public void onloanList() {
+        List<BookModel> booklist = userRepository.findbook();
+        String writer = null;
+        String bookname = null;
+        String amount = null;
+        String state = "On loan";
+
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\tBook List\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\tWriter\t\t\t\t\t\t\t\t\t\tBook Name\t\t\t\t\t\t\t\t\t\tamount\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+
+        Object list0 = booklist.get(0);
+        Object list1 = booklist.get(1);
+        Object list2 = booklist.get(2);
+        Object list3 = booklist.get(3);
+        Object list4 = booklist.get(4);
+
+        if (state.equals(((BookModel) list0).getState())) {
+            System.out.printf("|\t\t  %s\t\t\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
+                    ((BookModel) list0).getWriter(), ((BookModel) list0).getBookName(), ((BookModel) list0).getAmount());
+        }
+        if (state.equals(((BookModel) list1).getState())) {
+            System.out.printf("|\t\t  %s\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
+                    ((BookModel) list1).getWriter(), ((BookModel) list1).getBookName(), ((BookModel) list1).getAmount());
+        }
+        if (state.equals(((BookModel) list2).getState())) {
+            System.out.printf("|\t\t  %s\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
+                    ((BookModel) list2).getWriter(), ((BookModel) list2).getBookName(), ((BookModel) list2).getAmount());
+        }
+        if (state.equals(((BookModel) list3).getState())) {
+            System.out.printf("|\t\t  %s\t\t\t\t\t\t  %s\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
+                    ((BookModel) list3).getWriter(), ((BookModel) list3).getBookName(), ((BookModel) list3).getAmount());
+        }
+        if (state.equals(((BookModel) list4).getState())) {
+            System.out.printf("|\t\t  %s\t\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
+                    ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getAmount());
+        }
+
+    }
+
     public void search_Writer() {                    // 책 저자로 검색
         BookService bookService = new BookService();
         Scanner scanner = new Scanner(System.in);
@@ -128,6 +169,21 @@ public class BookView {
         System.out.print("Select Number : ");
         menuNum = scanner.nextLine();
         int response = bookService.search_bookname(menuNum);
+        switch (response){
+            case 0:             //
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+        }
+
+    }
+
+    public void returnbook(){
 
     }
 

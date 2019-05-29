@@ -55,6 +55,22 @@ public class UserService {
         return result;// 4. 결과값 반환
     }
 
+    public int logoutUser(String value){
+        int result = 0;
+
+        String Value = "Y";
+        String nonValue = "N";
+
+        if(Value.equalsIgnoreCase(value.toLowerCase())){
+            userRepository.setLogout();
+            return 1;
+        } else if(nonValue.equalsIgnoreCase(value.toLowerCase())){
+            return 2;
+        }
+        return result;
+    }
+
+
     public int findUser(String name, String email){
         int result = 0;         // 0 : 동일한 이름과 email없음 1: id / pwd 반환
         // 1. userList를 가져온다.
@@ -68,8 +84,8 @@ public class UserService {
                 ID = model.getId();
                 Pwd = model.getPassword();
                 FrontView.existIDPWD();
-                System.out.println("Your ID : " + ID);
-                System.out.println("Your Password : " + Pwd);
+                System.out.println("\t\t\tYour ID : " + ID);
+                System.out.println("\t\t\tYour Password : " + Pwd);
                 return result;                  // id / pwd 반환
             }
         }

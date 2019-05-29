@@ -1,6 +1,7 @@
 package repository;
 
 import DB.LocalDB;
+import DB.LoginDB;
 import model.BookModel;
 import model.RentModel;
 import model.UserModel;
@@ -25,6 +26,15 @@ public class UserRepository {
     public int saveRent(RentModel rentModel) {
         LocalDB.rentlist.add(rentModel);
         return 0;
+    }
+
+    public UserModel currentUser(){ return LoginDB.loginUser; }
+
+    public void setLogout(){
+        LoginDB.loginUser.setId(null);
+        LoginDB.loginUser.setPassword(null);
+        LoginDB.loginUser.setEmail(null);
+        LoginDB.loginUser.setName(null);
     }
 
     public List<UserModel> findAll() {           // List<UserModel> 반환해야할 정보 List

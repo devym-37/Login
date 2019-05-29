@@ -8,6 +8,7 @@ import java.util.List;
 
 public class BookService {
     UserRepository BookRepository = new UserRepository();
+
     public int saveBook(String Writer, String BookName, String Isbn, String Amount, String State){
         List<BookModel> Booklist = BookRepository.findbook();
         for (BookModel Book : Booklist) {
@@ -21,15 +22,17 @@ public class BookService {
         return 1;
     }
 
+
     public int search_writer(String writer){          // 책 검색
         List<BookModel> check_book = BookRepository.findbook();
         int result = 0;                 // 0 : 책 없음, 1 : 책 있음, 2 : 책 대여중
 
         String Writer = null;
         String Bookname = null;
+        String caseWriter = writer.toLowerCase();
         String state = "On loan";
         for (BookModel booklist : check_book) {
-            if(writer.equalsIgnoreCase(booklist.getWriter())){
+            if(booklist.getWriter().toLowerCase().contains(caseWriter)){
                 if(state.equals(booklist.getState())){
                     PageView.rentpage4();
                     result = 2;
@@ -55,9 +58,10 @@ public class BookService {
         int result = 0;                 // 0 : 책 없음, 1 : 책 있음, 2 : 책 대여중
         String Writer = null;
         String Bookname = null;
+        String caseBookname = bookname.toLowerCase();
         String state = "On loan";
         for (BookModel booklist : check_book) {
-            if(bookname.equalsIgnoreCase(booklist.getBookName())){
+            if(booklist.getBookName().toLowerCase().contains(caseBookname)){
                 if(state.equals(booklist.getState())){
                     PageView.rentpage4();
                     result = 2;
@@ -79,10 +83,7 @@ public class BookService {
         return result;
     }
 
-    public void rentalBook(){
 
-    }
-    // 대여 / 반납 기능
 
 
 

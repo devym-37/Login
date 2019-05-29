@@ -17,12 +17,13 @@ public class ModuleView {
         while (loop) {
             FrontView.frontDesign();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("Select Number : ");
+            System.out.print("\t\t\tSelect Number : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
                 case 0:
                     bookView.currentBookView();
                     register_pro();
+                    loop = false;
                     break;
                 case 1:
                     FrontView.login_front();
@@ -62,7 +63,7 @@ public class ModuleView {
         while (loop) {
             FrontView.reg_afterfront();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("Select Num : ");
+            System.out.print("\t\t\tSelect Num : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
                 case 1:
@@ -98,17 +99,21 @@ public class ModuleView {
         while (loop) {
             PageView.Bookpage1();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("Select Num : ");
+            System.out.print("\t\t\tSelect Num : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
-                case 1:                 // book list
+                case 0:                 // book list
                     bookView.currentBookView();
-                    rentView();                   //rent service
+                    returnlistView();                   //rent service
                     loop = false;
                     break;
-                case 2:                 // rentable booklist
+                case 1:                 // rentable booklist
                     bookView.rentalList();
-                    searchRentView();
+                    rentView();
+                    break;
+                case 2:                 // onloan booklist
+                    bookView.onloanList();
+                    returnlistView();
                     break;
                 case 3:                 // book search
                     searchbook();
@@ -116,7 +121,7 @@ public class ModuleView {
                     break;
                 case 4:                 // book borrow
                     break;
-                case 5:
+                case 5:                 // return book
                     break;
                 default:
                     PageView.inputError();
@@ -133,7 +138,7 @@ public class ModuleView {
         while (loop) {
             PageView.searchpage();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("Select Num : ");
+            System.out.print("\t\t\tSelect Num : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
                 case 1:         // 저자로 검색
@@ -151,7 +156,30 @@ public class ModuleView {
         }
     }
 
-    public static void rentView() {
+    public static void rentView(){
+        BookView bookView = new BookView();
+        int menuNum = 0;
+        boolean loop = true;
+        while(loop){
+            PageView.rentpage2();
+            Scanner SelectNum = new Scanner(System.in);
+            System.out.print("\t\t\tSelect Num : ");
+            menuNum = SelectNum.nextInt();
+            switch (menuNum){
+                case 1:             // bookrent;
+
+                    break;
+                case 2:
+                    bookrent();
+                    break;
+                default:
+                    PageView.inputError();
+                    break;
+            }
+        }
+    }
+
+    public static void returnlistView() {
         BookView bookView = new BookView();
         int menuNum = 0;
         boolean loop = true;
@@ -159,11 +187,11 @@ public class ModuleView {
         while (loop) {
             PageView.rentpage1();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("Select Num : ");
+            System.out.print("\t\t\tSelect Num : ");
             menuNum = SelectNum.nextInt();
             switch (menuNum) {
                 case 1:
-                    bookView.rentalList();
+                    bookrent();
                     break;
                 case 2:
                     FrontView.Off_front();
@@ -185,14 +213,14 @@ public class ModuleView {
         while (loop) {
             PageView.rentpage2();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("Select Num : ");
+            System.out.print("\t\t\tSelect Num : ");
             menuNum = SelectNum.nextInt();
             switch (menuNum) {
-                case 1:
+                case 1:                 // rent a book();
+
                     break;
                 case 2:
                     bookView.currentBookView();
-                    PageView.rentpage1();
                     break;
                 default:
                     PageView.inputError();
