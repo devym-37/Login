@@ -33,6 +33,16 @@ public class FrontView {
         System.out.println("└─────────────────────────────────────────────────────────────┘");
 
     }
+
+    public static void adminLogin(){
+
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t !!   Administrator privilege mode  !! \t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t Sign up for a new book library \t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+
+    }
+
     public static void register_front(){
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
@@ -135,7 +145,7 @@ public class FrontView {
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t !!  Not existing ID   !!  \t\t\t\t\t\t\t\t\t\t\t\t│");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  --> Register ID  \t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t  --> Register ID  \t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
 
     }

@@ -121,12 +121,73 @@ public class BookView {
 
     }
 
+    public void enrollBook(){
+
+        BookService bookService = new BookService();
+        Scanner scanner = new Scanner(System.in);
+        String Writer = null;
+        String BookName = null;
+        String Isbn = null;
+        String Amount = null;
+        String State = null;
+
+        System.out.print("\t\t\tEnroll Writer : ");
+        Writer = scanner.nextLine();
+        System.out.print("\t\t\tEnroll BookName : ");
+        BookName = scanner.nextLine();
+        System.out.print("\t\t\tEnroll Isbn : ");
+        Isbn = scanner.nextLine();
+        System.out.print("\t\t\tEnroll Amount : ");
+        Amount = scanner.nextLine();
+        System.out.print("\t\t\tEnroll State : ");
+        State = scanner.nextLine();
+
+        int response = bookService.saveBook(Writer, BookName, Isbn, Amount, State);
+        switch (response){
+            case 0:                     // 이미 있는 책
+                PageView.adminpage3();
+                break;
+            case 1:                     // 새로운 책 등록
+                PageView.adminpage();
+                addBook();
+                break;
+        }
+
+    }
+
+    public void addBook(){
+        BookView bookView = new BookView();
+        BookService bookService = new BookService();
+
+        Scanner scanner = new Scanner(System.in);
+
+        String value = null;
+        PageView.adminpage2();
+        System.out.print("\t\t\tEnter Input Key (Y/N) : ");
+        value = scanner.nextLine();
+        int response = bookService.enrollBook(value);
+        switch (response){
+            case 0:
+                PageView.inputError();
+                addBook();
+                break;
+            case 1:
+                bookView.enrollBook();
+                break;
+            case 2:
+                break;
+        }
+
+    }
+
+
+
     public void search_Writer() {                    // 책 저자로 검색
         BookService bookService = new BookService();
         Scanner scanner = new Scanner(System.in);
         String Writer = null;
 
-        System.out.print("Search Writer : ");
+        System.out.print("\t\t\tSearch Writer : ");
         Writer = scanner.nextLine();
 
         int response = bookService.search_writer(Writer);
@@ -147,7 +208,7 @@ public class BookView {
         Scanner scanner = new Scanner(System.in);
         String Bookname = null;
 
-        System.out.print("Search Bookname : ");
+        System.out.print("\t\t\tSearch Bookname : ");
         Bookname = scanner.nextLine();
         int response = bookService.search_bookname(Bookname);
         switch (response) {
@@ -166,7 +227,7 @@ public class BookView {
         Scanner scanner = new Scanner(System.in);
         String menuNum = null;
 
-        System.out.print("Select Number : ");
+        System.out.print("\t\t\tSelect Number : ");
         menuNum = scanner.nextLine();
         int response = bookService.search_bookname(menuNum);
         switch (response){

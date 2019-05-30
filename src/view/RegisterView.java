@@ -52,28 +52,37 @@ public class RegisterView {
 
     public void login_View() {
         RegisterView registerView = new RegisterView();
+        BookView bookView = new BookView();
         ModuleView moduleView = new ModuleView();
         Scanner scanner = new Scanner(System.in);
 
         String id = null;
         String password = null;
 
-        System.out.print("\t\t\tYour ID : ");
+        System.out.print("\t\t\tEnter Your ID : ");
         id = scanner.nextLine();
 
-        System.out.print("\t\t\tYour Password : ");
+        System.out.print("\t\t\tEnter Your Password : ");
         password = scanner.nextLine();
 
         int response = userService.login(id, password);
         switch (response) {
             case 0:
                 FrontView.nonId_login(); // id 없음
+                registerView.registerView();
+                FrontView.login_front();
+                registerView.login_View();
                 break;
             case 1:
                 FrontView.pwderror_front(); // 비밀번호 틀림
+                registerView.login_View();
                 break;
             case 2:
                 FrontView.success_login();  // login 성공
+                break;
+            case 3:
+                FrontView.adminLogin();     // 관리자 모드 login
+                bookView.enrollBook();
                 break;
         }
     }
@@ -85,7 +94,7 @@ public class RegisterView {
 
         String value = null;
         FrontView.logoutFroont();
-        System.out.print("\t\t\tInput key (Y/N) : ");
+        System.out.print("\t\t\tEnter Input key (Y/N) : ");
         value = scanner.nextLine();
         int response = userService.logoutUser(value);
         switch (response){
@@ -109,10 +118,10 @@ public class RegisterView {
         String name = null;
         String email = null;
 
-        System.out.print("\t\t\tName : ");
+        System.out.print("\t\t\tEnter Your Name : ");
         name = scanner.nextLine();
 
-        System.out.print("\t\t\tE-mail : ");
+        System.out.print("\t\t\tEnter Your E-mail : ");
         email = scanner.nextLine();
 
         int findUser = userService.findUser(name, email);
@@ -133,13 +142,13 @@ public class RegisterView {
         String id = null;
         String password = null;
 
-        System.out.print("\t\t\tYour Name : ");
+        System.out.print("\t\t\tEnter Your Name : ");
         name = scanner.nextLine();
 
-        System.out.print("\t\t\tYour Id : ");
+        System.out.print("\t\t\tEnter Your Id : ");
         id = scanner.nextLine();
 
-        System.out.print("\t\t\tYour Password : ");
+        System.out.print("\t\t\tEnter Your Password : ");
         password = scanner.nextLine();
 
         int removeUser = userService.removeUser(name, id, password);

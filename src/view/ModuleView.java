@@ -63,7 +63,7 @@ public class ModuleView {
         while (loop) {
             FrontView.reg_afterfront();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("\t\t\tSelect Num : ");
+            System.out.print("\t\t\tSelect Number : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
                 case 1:
@@ -99,7 +99,7 @@ public class ModuleView {
         while (loop) {
             PageView.Bookpage1();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("\t\t\tSelect Num : ");
+            System.out.print("\t\t\tSelect Number : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
                 case 0:                 // book list
@@ -138,7 +138,7 @@ public class ModuleView {
         while (loop) {
             PageView.searchpage();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("\t\t\tSelect Num : ");
+            System.out.print("\t\t\tSelect Number : ");
             menu_num = SelectNum.nextInt();
             switch (menu_num) {
                 case 1:         // 저자로 검색
@@ -163,7 +163,7 @@ public class ModuleView {
         while(loop){
             PageView.rentpage2();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("\t\t\tSelect Num : ");
+            System.out.print("\t\t\tSelect Number : ");
             menuNum = SelectNum.nextInt();
             switch (menuNum){
                 case 1:             // bookrent;
@@ -187,7 +187,7 @@ public class ModuleView {
         while (loop) {
             PageView.rentpage1();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("\t\t\tSelect Num : ");
+            System.out.print("\t\t\tSelect Number : ");
             menuNum = SelectNum.nextInt();
             switch (menuNum) {
                 case 1:
@@ -213,7 +213,7 @@ public class ModuleView {
         while (loop) {
             PageView.rentpage2();
             Scanner SelectNum = new Scanner(System.in);
-            System.out.print("\t\t\tSelect Num : ");
+            System.out.print("\t\t\tSelect Number : ");
             menuNum = SelectNum.nextInt();
             switch (menuNum) {
                 case 1:                 // rent a book();

@@ -2,22 +2,19 @@ import DB.LocalDB;
 import model.BookModel;
 import model.RentModel;
 import model.UserModel;
-import repository.UserRepository;
-import view.BookView;
-
-import java.util.List;
+import view.ModuleView;
 
 
 public class EntryPoint {
 
     public static void main(String[] args) {
-        String[] Name = {"thor", "spiderman", "ironman", "hulk", "thanos"};
-        String[] Email = {"thor@naver.com", "spiderman@naver.com", "ironman@naver.com", "hulk@naver.com", "thanos@naver.com"};
-        String[] Id = {"thor", "spiderman", "ironman", "hulk", "thanos"};
-        String[] Password = {"thor123", "spiderman123", "ironman123", "hulk123", "thanos123"};
+        String[] Name = {"thor", "spiderman", "ironman", "hulk", "thanos", "admin"};
+        String[] Email = {"thor@naver.com", "spiderman@naver.com", "ironman@naver.com", "hulk@naver.com", "thanos@naver.com", "admin@naver.com"};
+        String[] Id = {"thor", "spiderman", "ironman", "hulk", "thanos", "admin"};
+        String[] Password = {"thor123", "spiderman123", "ironman123", "hulk123", "thanos123", "admin123"};
 
-        for(int i = 0; i < 5; i++){
-            UserModel user= new UserModel();
+        for (int i = 0; i < 6; i++) {
+            UserModel user = new UserModel();
             user.setName(Name[i]);
             user.setEmail(Email[i]);
             user.setId(Id[i]);
@@ -30,7 +27,7 @@ public class EntryPoint {
         String[] Amount = {"1", "0", "1", "0", "1"};
         String[] State = {"Rentable", "On loan", "Rentable", "On loan", "Rentable"};
 
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             BookModel book = new BookModel();
             book.setWriter(Writer[i]);
             book.setBookName(BookName[i]);
@@ -41,26 +38,49 @@ public class EntryPoint {
         }
 
         // already rent user
-        RentModel rent = new RentModel();
+        RentModel currRent = new RentModel();
+        currRent.setId(Id[0]);
+        currRent.setWriter(Writer[1]);
+        currRent.setBookName(BookName[1]);
+        currRent.setAmount(Amount[1]);
+
+        RentModel currRent1 = new RentModel();
+        currRent1.setId(Id[1]);
+        currRent1.setWriter(Writer[3]);
+        currRent1.setBookName(BookName[3]);
+        currRent1.setAmount(Amount[3]);
+
+
+        /*
         UserRepository rentRepository = new UserRepository();
-        List<UserModel> select_user = rentRepository.findAll();
         List<BookModel> select_Book = rentRepository.findbook();
-        rent.setId(Id[0]);
-        rent.setId(Id[1]);
+        List<UserModel> select_User = rentRepository.findUser();
+        List<RentModel> check_Rent = rentRepository.findrent();
         for (BookModel book : select_Book) {
-            String stateValue = "On loan";
-            if(stateValue.equals(book.getState())){
-                rent.setWriter(book.getWriter());
-                rent.setBookName(book.getBookName());
-                rent.setAmount(book.getAmount());
+            RentModel rent = new RentModel();
+            for (UserModel user : select_User) {
+                for (RentModel rentModel : check_Rent) {
+                    String stateValue = "On loan";
+                    if (stateValue.equals(book.getState())) {
+                        if (!rentModel.getWriter().equals(book.getWriter())) {
+                            rent.setId(user.getId());
+                            rent.setWriter(book.getWriter());
+                            rent.setBookName(book.getBookName());
+                            rent.setAmount(book.getAmount());
+                            LocalDB.rentlist.add(rent);
+                        }
+                    }
+                }
             }
         }
+        */
 
 
-        BookView bookView = new BookView();
 
-        //ModuleView.execute_program();               // 실행
+        ModuleView.execute_program();               // 실행
+
 
     }
+
 
 }

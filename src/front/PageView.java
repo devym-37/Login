@@ -10,6 +10,7 @@ public class PageView {
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 3. Search a Book     \t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 4. Rent a Book         \t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 5. Return Book         \t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 6. Logout              \t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 
@@ -35,14 +36,14 @@ public class PageView {
     public static void rentpage1(){
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t1. Return Page\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. Program Off  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. logout       \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 
     public static void rentpage2(){
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t1. Rent a Book  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. Return Page\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. logout     \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 
@@ -62,7 +63,25 @@ public class PageView {
 
     public static void inputError(){
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t   Input Error  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t   Input Error  \t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+    }
+
+    public static void adminpage(){
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t  New Book registered in library  \t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+    }
+
+    public static void adminpage2(){
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t  Do you have any more books to enroll? \t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+    }
+
+    public static void adminpage3(){
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t  This book is already registered in the library. \t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 

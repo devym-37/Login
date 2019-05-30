@@ -28,6 +28,12 @@ public class UserRepository {
         return 0;
     }
 
+    public int loginUser(UserModel userModel){
+        LoginDB.loginUser = userModel;
+        return 0;
+    }
+
+
     public UserModel currentUser(){ return LoginDB.loginUser; }
 
     public void setLogout(){
@@ -37,7 +43,7 @@ public class UserRepository {
         LoginDB.loginUser.setName(null);
     }
 
-    public List<UserModel> findAll() {           // List<UserModel> 반환해야할 정보 List
+    public List<UserModel> findUser() {           // List<UserModel> 반환해야할 정보 List
         return LocalDB.userlist;
     }
 

@@ -3,23 +3,42 @@ package service;
 import front.PageView;
 import model.BookModel;
 import repository.UserRepository;
+import view.BookView;
 
 import java.util.List;
 
 public class BookService {
     UserRepository BookRepository = new UserRepository();
-
+    List<BookModel> Booklist = BookRepository.findbook();
     public int saveBook(String Writer, String BookName, String Isbn, String Amount, String State){
-        List<BookModel> Booklist = BookRepository.findbook();
+
         for (BookModel Book : Booklist) {
-            if(BookName.equals(Book.getBookName())){
-                return -1;
+            if(Writer.equals(Book.getWriter()) && BookName.equals(Book.getBookName()) && Isbn.equals(Book.getIsbn())
+                ){
+                return 0;               // 기존 책이 존재
             }
         }
         BookModel newBook = new BookModel(Writer, BookName, Isbn, Amount, State);
         BookRepository.saveBook(newBook);
 
-        return 1;
+        return 1;                   // 새로운 책 등록
+    }
+
+    public int enrollBook(String value){
+        BookView bookView = new BookView();
+
+        int result = 0;
+
+        String Value = "Y";
+        String nonValue = "N";
+
+        if(Value.equalsIgnoreCase(value.toLowerCase())){
+            return 1;
+        }else if(nonValue.equalsIgnoreCase(value.toLowerCase())){
+            return 2;
+        }
+
+        return  result;
     }
 
 

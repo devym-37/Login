@@ -9,11 +9,7 @@ public class RentView {
 
     public void rent_View(){
         UserRepository rentRepository = new UserRepository();
-        List<RentModel> renta = rentRepository.findrent();
-        RentModel rent3 = new RentModel();
-        for (RentModel rent3 : renta) {
-            System.out.println(rent3.getId());
-        }
+        List<RentModel> rentlist = rentRepository.findrent();
 
 
     }

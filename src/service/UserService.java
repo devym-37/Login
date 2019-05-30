@@ -20,7 +20,7 @@ public class UserService {
 
     public int saveUser(String id, String password, String name, String email){
 
-        List<UserModel> check_List = userRepository.findAll();      // 1
+        List<UserModel> check_List = userRepository.findUser();      // 1
         for(UserModel model : check_List){                          // 2
             if(id.equals(model.getId())){
                 return 1;                                          // 값만 반환하고 기능 정지
@@ -39,7 +39,9 @@ public class UserService {
     public int login(String id, String password){
         int result = 0;         // 0 : id없음 , 1 : 비밀번호 틀림 , 2: 로그인 성공
         // 1. userList를 가져온다.
-        List<UserModel> check_list = userRepository.findAll();
+        List<UserModel> check_list = userRepository.findUser();
+        String adId = "admin";
+        String adPwd = "admin123";
         // 2. userList를 돌며, id확인
         for (UserModel model : check_list) {
             if(id.equals(model.getId())){
@@ -49,8 +51,12 @@ public class UserService {
                 }
                 result = 1;
                 return result;          // 3. 똑같은 id가 있으면, pwd 확인 pwd 틀림
+            }else if(id.equals(adId)){
+                if(password.equals(adPwd)){
+                    result = 3;
+                    return result;          // 4. 관리자 ID 확인
+                }
             }
-
         }
         return result;// 4. 결과값 반환
     }
@@ -74,7 +80,7 @@ public class UserService {
     public int findUser(String name, String email){
         int result = 0;         // 0 : 동일한 이름과 email없음 1: id / pwd 반환
         // 1. userList를 가져온다.
-        List<UserModel> findUser = userRepository.findAll();
+        List<UserModel> findUser = userRepository.findUser();
         // 2. userList를 돌며, 이름과 email 확인
         String ID = null;
         String Pwd = null;
@@ -95,7 +101,7 @@ public class UserService {
 
    public int removeUser(String name, String id, String password){
         int result = 0;         // 0 : 입력한 내용의 data가 없음
-       List<UserModel> removeUser = userRepository.findAll();
+       List<UserModel> removeUser = userRepository.findUser();
        Iterator<UserModel> itUser = removeUser.iterator();
        String Name = null;
        String Id = null;
