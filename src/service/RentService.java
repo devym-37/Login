@@ -10,7 +10,7 @@ import java.util.List;
 public class RentService {
     UserRepository rentRepository = new UserRepository();
 
-    public int saveRent(String Id, String Writer, String BookName, String Amount){
+    public int saveRent(String Id, String Writer, String BookName, String Amount) {
         List<RentModel> check_rent = rentRepository.findrent();
         RentModel newRent = new RentModel(Id, Writer, BookName, Amount);
         rentRepository.saveRent(newRent);
@@ -18,16 +18,10 @@ public class RentService {
     }
 
 
-
-
-    public int rentBook(String value){
-        List<BookModel> bookState = rentRepository.findbook();
-        List<UserModel> rentUser = rentRepository.findUser();
-        UserRepository currUser = new UserRepository();
-        UserModel currUser1 = new UserModel();
-        RentModel rentUser1 = new RentModel();
-        BookService bookService = new BookService();
-
+    public int rentBook(String value) {
+        List<BookModel> booklist = rentRepository.findbook();
+        UserRepository userRepository = new UserRepository();
+        UserModel currentUserModel = userRepository.currentUser();
 
         String Value = "Y";
         String nonValue = "N";
@@ -38,23 +32,28 @@ public class RentService {
         String Amount = "0";
         String State = "On loan";
 
-        if(Value.equalsIgnoreCase(value.toLowerCase())){
-            for (BookModel booklist : bookState) {
-                    rentUser1.setId(currUser1.getId());
-                    rentUser1.setWriter(booklist.getWriter());
-                    rentUser1.setBookName(booklist.getBookName());
+        if (Value.equalsIgnoreCase(value.toLowerCase())) {
+            for (BookModel bookModel : booklist) {
+                if(!bookModel.getState().equals(State)) {
+                    RentModel rentUser1 = new RentModel();
+                    rentUser1.setId(currentUserModel.getId());
+                    rentUser1.setWriter(bookModel.getWriter());
+                    rentUser1.setBookName(bookModel.getBookName());
                     rentUser1.setAmount(State);
-                    booklist.setState(State);
-                    booklist.setAmount(Amount);
+                    bookModel.setState(State);
+                    bookModel.setAmount(Amount);
+                    rentRepository.saveRent(rentUser1);
+
+                }
             }
             return 1;
-        }else if(nonValue.equalsIgnoreCase(value.toLowerCase())){
+        } else if (nonValue.equalsIgnoreCase(value.toLowerCase())) {
             return 2;
         }
         return 0;
     }
 
-    public void returnBook(){
+    public void returnBook() {
 
     }
 

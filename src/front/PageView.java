@@ -47,7 +47,6 @@ public class PageView {
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 
-
     public static void rentpage3(){
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t1. Rent a Book  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");

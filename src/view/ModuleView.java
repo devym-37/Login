@@ -93,6 +93,7 @@ public class ModuleView {
 
     public static void bookrent() {
         BookView bookView = new BookView();
+        RentView rentView = new RentView();
         RegisterView registerView = new RegisterView();
         int menu_num = 0;
         boolean loop = true;
@@ -122,7 +123,7 @@ public class ModuleView {
                     rentView();
                     break;
                 case 4:                 // book borrow
-
+                    rentView.curr_rentView();
                     break;
                 case 5:                 // return book
 

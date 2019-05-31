@@ -3,7 +3,6 @@ package service;
 import front.PageView;
 import model.BookModel;
 import repository.UserRepository;
-import view.BookView;
 
 import java.util.List;
 
@@ -25,7 +24,6 @@ public class BookService {
     }
 
     public int enrollBook(String value){
-        BookView bookView = new BookView();
 
         int result = 0;
 
@@ -57,6 +55,9 @@ public class BookService {
                     result = 2;
                     return result;
                 }
+                BookModel searchBookModel = new BookModel(booklist.getBookName(), booklist.getWriter(), booklist.getIsbn(), booklist.getAmount(), booklist.getState());
+                BookRepository.callsearchWriter(searchBookModel);
+
                 Writer = booklist.getWriter();
                 Bookname = booklist.getBookName();
                 System.out.println("┌─────────────────────────────────────────────────────────────┐");

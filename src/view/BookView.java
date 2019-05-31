@@ -37,10 +37,9 @@ public class BookView {
 
         for(int i = 5; i < booklist.size(); i++){
             Object list = booklist.get(i);
-            System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
+            System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%-13s\t\t\t|%n",
                     ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
         }
-
     }
 
     public void rentalList() {
@@ -85,7 +84,6 @@ public class BookView {
             System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
                     ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
         }
-
     }
 
     public void onloanList() {
@@ -129,8 +127,6 @@ public class BookView {
             System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
                     ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
         }
-
-
     }
 
     public void enrollBook(){
@@ -141,7 +137,7 @@ public class BookView {
         String BookName = null;
         String Isbn = null;
         String Amount = null;
-        String State = null;
+        String State = "Rentable";
 
         System.out.print("\t\t\tEnroll Writer : ");
         Writer = scanner.nextLine();
@@ -151,20 +147,18 @@ public class BookView {
         Isbn = scanner.nextLine();
         System.out.print("\t\t\tEnroll Amount : ");
         Amount = scanner.nextLine();
-        System.out.print("\t\t\tEnroll State : ");
-        State = scanner.nextLine();
 
         int response = bookService.saveBook(Writer, BookName, Isbn, Amount, State);
         switch (response){
             case 0:                     // 이미 있는 책
                 PageView.adminpage3();
+                enrollBook();
                 break;
             case 1:                     // 새로운 책 등록
                 PageView.adminpage();
                 addBook();
                 break;
         }
-
     }
 
     public void addBook(){
@@ -189,7 +183,6 @@ public class BookView {
             case 2:
                 break;
         }
-
     }
 
 
@@ -212,7 +205,6 @@ public class BookView {
             case 2:             // 검색한 책 대여중
                 break;
         }
-
     }
 
     public void search_Bookname() {                    // 책 이름으로 검색

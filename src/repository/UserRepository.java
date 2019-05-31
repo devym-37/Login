@@ -32,6 +32,15 @@ public class UserRepository {
         LoginDB.loginUser = userModel;
         return 0;
     }
+    public int searchWriter(BookModel bookModel){
+        LoginDB.searchBook = bookModel;
+        return 0;
+    }
+
+    public int searchBookName(BookModel bookModel){
+        LoginDB.searchBook = bookModel;
+        return 0;
+    }
 
     public UserModel logoutuser(){ return LoginDB.loginUser; }
 
@@ -42,6 +51,14 @@ public class UserRepository {
         LoginDB.loginUser.setPassword(null);
         LoginDB.loginUser.setEmail(null);
         LoginDB.loginUser.setName(null);
+    }
+
+    public BookModel callsearchWriter(BookModel searchBookModel){
+        return LoginDB.searchBook;
+    }
+
+    public BookModel callsearchBookName(){
+        return LoginDB.searchBook;
     }
 
     public List<UserModel> findUser() {           // List<UserModel> 반환해야할 정보 List

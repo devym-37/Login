@@ -10,13 +10,9 @@ import java.util.Scanner;
 
 public class RentView {
 
-    public void rent_View(){
+    public void curr_rentView(){
         UserRepository rentRepository = new UserRepository();
-        List<RentModel> rentlist = rentRepository.findrent();
-
-        String Id = null;
-        String Writer = null;
-        String BookName = null;
+        List<RentModel> rentmodel = rentRepository.findrent();
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\tBook List\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
@@ -24,9 +20,9 @@ public class RentView {
         System.out.println("└─────────────────────────────────────────────────────────────┘");
 
 
-        for(int i = 0; i < rentlist.size(); i++){
-            Object list = rentlist.get(i);
-            System.out.printf("|\t\t\t\t\t%-10s            \t\t\t%s\t\t\t\t\t\t%s\t\t\t|%n",
+        for(int i = 0; i < rentmodel.size(); i++){
+            Object list = rentmodel.get(i);
+            System.out.printf("\t\t\t\t\t%-10s            \t\t\t%s\t\t\t\t\t\t%s\t\t\t%n",
                     ((RentModel) list).getId(), ((RentModel) list).getWriter(), ((RentModel) list).getBookName());
         }
     }
