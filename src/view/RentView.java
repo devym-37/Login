@@ -1,9 +1,12 @@
 package view;
 
+import front.PageView;
 import model.RentModel;
 import repository.UserRepository;
+import service.RentService;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class RentView {
 
@@ -11,6 +14,46 @@ public class RentView {
         UserRepository rentRepository = new UserRepository();
         List<RentModel> rentlist = rentRepository.findrent();
 
+        String Id = null;
+        String Writer = null;
+        String BookName = null;
+
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\tBook List\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\tBorrower\t\t\t\t\t\tWriter\t\t\t\t\t\t\t\tBook Name\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+
+
+        for(int i = 0; i < rentlist.size(); i++){
+            Object list = rentlist.get(i);
+            System.out.printf("|\t\t\t\t\t%-10s            \t\t\t%s\t\t\t\t\t\t%s\t\t\t|%n",
+                    ((RentModel) list).getId(), ((RentModel) list).getWriter(), ((RentModel) list).getBookName());
+        }
+    }
+
+    public void rentbook() {
+        RentService rentService = new RentService();
+        Scanner scanner = new Scanner(System.in);
+        String value = null;
+
+        System.out.print("\t\t\tWill you borrow this book ? (Y/N) : ");
+        value = scanner.nextLine();
+        int response = rentService.rentBook(value);
+        switch (response){
+            case 0:             //  default
+                PageView.inputError();
+                break;
+            case 1:             // rent
+                ModuleView.bookrent();
+                break;
+            case 2:             // back
+                ModuleView.bookrent();
+                break;
+        }
+
+    }
+
+    public void returnbook(){
 
     }
 

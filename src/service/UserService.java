@@ -40,12 +40,16 @@ public class UserService {
         int result = 0;         // 0 : id없음 , 1 : 비밀번호 틀림 , 2: 로그인 성공
         // 1. userList를 가져온다.
         List<UserModel> check_list = userRepository.findUser();
+
         String adId = "admin";
         String adPwd = "admin123";
+
         // 2. userList를 돌며, id확인
         for (UserModel model : check_list) {
             if(id.equals(model.getId())){
                 if(password.equals(model.getPassword())){
+                    UserModel currUser = new UserModel(id, password, null, null);
+                    userRepository.loginUser(currUser);
                     result = 2;
                     return result;
                 }

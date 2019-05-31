@@ -33,6 +33,7 @@ public class UserRepository {
         return 0;
     }
 
+    public UserModel logoutuser(){ return LoginDB.loginUser; }
 
     public UserModel currentUser(){ return LoginDB.loginUser; }
 

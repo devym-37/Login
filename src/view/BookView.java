@@ -13,9 +13,7 @@ public class BookView {
 
     public void currentBookView() {
         List<BookModel> booklist = userRepository.findbook();
-        String writer = null;
-        String bookname = null;
-        String isbn = null;
+
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\tBook List\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\tWriter\t\t\t\t\t\t\t\tBook Name\t\t\t\t\t\t\t\t\t\t\t\tISBN\t\t\t\t│");
@@ -37,13 +35,17 @@ public class BookView {
         System.out.printf("|\t\t  %s\t\t\t\t\t%s\t\t\t\t\t\t\t\t\t\t\t\t  %s\t\t\t|%n",
                 ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getIsbn());
 
+        for(int i = 5; i < booklist.size(); i++){
+            Object list = booklist.get(i);
+            System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
+                    ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
+        }
+
     }
 
     public void rentalList() {
         List<BookModel> booklist = userRepository.findbook();
-        String writer = null;
-        String bookname = null;
-        String amount = null;
+
         String state = "Rentable";
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
@@ -78,13 +80,17 @@ public class BookView {
                     ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getAmount());
         }
 
+        for(int i = 5; i < booklist.size(); i++){
+            Object list = booklist.get(i);
+            System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
+                    ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
+        }
+
     }
 
     public void onloanList() {
         List<BookModel> booklist = userRepository.findbook();
-        String writer = null;
-        String bookname = null;
-        String amount = null;
+
         String state = "On loan";
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
@@ -118,6 +124,12 @@ public class BookView {
             System.out.printf("|\t\t  %s\t\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
                     ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getAmount());
         }
+        for(int i = 5; i < booklist.size(); i++){
+            Object list = booklist.get(i);
+            System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
+                    ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
+        }
+
 
     }
 
@@ -222,30 +234,6 @@ public class BookView {
         }
     }
 
-    public void rentbook() {
-        BookService bookService = new BookService();
-        Scanner scanner = new Scanner(System.in);
-        String menuNum = null;
 
-        System.out.print("\t\t\tSelect Number : ");
-        menuNum = scanner.nextLine();
-        int response = bookService.search_bookname(menuNum);
-        switch (response){
-            case 0:             //
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-        }
-
-    }
-
-    public void returnbook(){
-
-    }
 
 }

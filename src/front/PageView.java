@@ -8,7 +8,7 @@ public class PageView {
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 1. Rentable BookList \t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 2. On loan BookList  \t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 3. Search a Book     \t\t\t\t\t\t\t\t\t\t\t\t│");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 4. Rent a Book         \t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 4. Book being rented   \t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 5. Return Book         \t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\t 6. Logout              \t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
@@ -43,7 +43,7 @@ public class PageView {
     public static void rentpage2(){
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t1. Rent a Book  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. logout     \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. Return Page  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 

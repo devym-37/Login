@@ -7,6 +7,8 @@ import service.UserService;
 
 import java.util.Scanner;
 
+import static view.ModuleView.*;
+
 public class RegisterView {
     UserRepository userRepository = new UserRepository();
     UserService userService = new UserService();
@@ -37,10 +39,10 @@ public class RegisterView {
         if (response == 1) {                                         // 2
             FrontView.existing_ID();
         }
-        if(response == 2){
+        if (response == 2) {
             FrontView.existing_name();
         }
-        if(response == 3){
+        if (response == 3) {
             FrontView.existing_email();
         }
         if (response == 0) {                                          // 3
@@ -87,9 +89,8 @@ public class RegisterView {
         }
     }
 
-    public void logout_User(){
+    public void logout_User() {
         RegisterView registerView = new RegisterView();
-
         Scanner scanner = new Scanner(System.in);
 
         String value = null;
@@ -97,15 +98,20 @@ public class RegisterView {
         System.out.print("\t\t\tEnter Input key (Y/N) : ");
         value = scanner.nextLine();
         int response = userService.logoutUser(value);
-        switch (response){
+        switch (response) {
             case 0:
                 PageView.inputError();
                 break;
             case 1:
                 FrontView.logoutSuccess();
+                execute_program();
                 break;
             case 2:
                 FrontView.Nonlogout();
+                bookrent();
+                break;
+            default:
+                PageView.inputError();
                 break;
         }
 

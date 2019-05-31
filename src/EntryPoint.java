@@ -43,12 +43,14 @@ public class EntryPoint {
         currRent.setWriter(Writer[1]);
         currRent.setBookName(BookName[1]);
         currRent.setAmount(Amount[1]);
+        LocalDB.rentlist.add(currRent);
 
         RentModel currRent1 = new RentModel();
         currRent1.setId(Id[1]);
         currRent1.setWriter(Writer[3]);
         currRent1.setBookName(BookName[3]);
         currRent1.setAmount(Amount[3]);
+        LocalDB.rentlist.add(currRent1);
 
 
         /*
@@ -74,7 +76,6 @@ public class EntryPoint {
             }
         }
         */
-
 
 
         ModuleView.execute_program();               // 실행

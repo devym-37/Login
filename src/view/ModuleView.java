@@ -93,6 +93,7 @@ public class ModuleView {
 
     public static void bookrent() {
         BookView bookView = new BookView();
+        RegisterView registerView = new RegisterView();
         int menu_num = 0;
         boolean loop = true;
 
@@ -109,7 +110,7 @@ public class ModuleView {
                     break;
                 case 1:                 // rentable booklist
                     bookView.rentalList();
-                    rentView();
+                    returnlistView();
                     break;
                 case 2:                 // onloan booklist
                     bookView.onloanList();
@@ -118,10 +119,16 @@ public class ModuleView {
                 case 3:                 // book search
                     searchbook();
                     searchRentView();
+                    rentView();
                     break;
                 case 4:                 // book borrow
+
                     break;
                 case 5:                 // return book
+
+                    break;
+                case 6:
+                    registerView.logout_User();
                     break;
                 default:
                     PageView.inputError();
@@ -158,6 +165,8 @@ public class ModuleView {
 
     public static void rentView(){
         BookView bookView = new BookView();
+        RentView rentView = new RentView();
+        RegisterView registerView = new RegisterView();
         int menuNum = 0;
         boolean loop = true;
         while(loop){
@@ -167,10 +176,10 @@ public class ModuleView {
             menuNum = SelectNum.nextInt();
             switch (menuNum){
                 case 1:             // bookrent;
-
+                    rentView.rentbook();
                     break;
                 case 2:
-                    bookrent();
+                    registerView.logout_User();
                     break;
                 default:
                     PageView.inputError();
@@ -207,6 +216,7 @@ public class ModuleView {
 
     public static void searchRentView() {
         BookView bookView = new BookView();
+        RentView rentView = new RentView();
         int menuNum = 0;
         boolean loop = true;
 
@@ -217,7 +227,7 @@ public class ModuleView {
             menuNum = SelectNum.nextInt();
             switch (menuNum) {
                 case 1:                 // rent a book();
-
+                    rentView.rentbook();
                     break;
                 case 2:
                     bookView.currentBookView();
