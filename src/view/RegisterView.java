@@ -2,15 +2,14 @@ package view;
 
 import front.FrontView;
 import front.PageView;
-import repository.UserRepository;
 import service.UserService;
 
 import java.util.Scanner;
 
-import static view.ModuleView.*;
+import static view.ModuleView.bookrent;
+import static view.ModuleView.execute_program;
 
 public class RegisterView {
-    UserRepository userRepository = new UserRepository();
     UserService userService = new UserService();
 
     public void registerView() {
@@ -55,7 +54,6 @@ public class RegisterView {
     public void login_View() {
         RegisterView registerView = new RegisterView();
         BookView bookView = new BookView();
-        ModuleView moduleView = new ModuleView();
         Scanner scanner = new Scanner(System.in);
 
         String id = null;
@@ -86,11 +84,13 @@ public class RegisterView {
                 FrontView.adminLogin();     // 관리자 모드 login
                 bookView.enrollBook();
                 break;
+            default:
+                PageView.inputError();
+                break;
         }
     }
 
     public void logout_User() {
-        RegisterView registerView = new RegisterView();
         Scanner scanner = new Scanner(System.in);
 
         String value = null;
@@ -118,7 +118,6 @@ public class RegisterView {
     }
 
     public void find_User() {
-
         Scanner scanner = new Scanner(System.in);
 
         String name = null;
@@ -136,6 +135,9 @@ public class RegisterView {
                 FrontView.nonName_login();// 동일한 id/email 없음
                 break;
             case 1:             // id/pwd 반환
+                break;
+            default:
+                PageView.inputError();
                 break;
         }
 
@@ -164,6 +166,9 @@ public class RegisterView {
                 break;
             case 1:                     // 입력한 data 삭제
                 FrontView.removeData();
+                break;
+            default:
+                PageView.inputError();
                 break;
         }
 

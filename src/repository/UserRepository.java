@@ -53,13 +53,7 @@ public class UserRepository {
         LoginDB.loginUser.setName(null);
     }
 
-    public BookModel callsearchWriter(BookModel searchBookModel){
-        return LoginDB.searchBook;
-    }
-
-    public BookModel callsearchBookName(){
-        return LoginDB.searchBook;
-    }
+    public BookModel callsearchBookName() { return LoginDB.searchBook; }
 
     public List<UserModel> findUser() {           // List<UserModel> 반환해야할 정보 List
         return LocalDB.userlist;
@@ -69,8 +63,6 @@ public class UserRepository {
         return LocalDB.booklist;
     }           // List<booklist> 반환해야할 정보 List
 
-    public List<RentModel> findrent() {
-        return LocalDB.rentlist;
-    }
+    public List<RentModel> findrent() { return LocalDB.rentlist; }
 
 }

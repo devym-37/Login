@@ -56,7 +56,7 @@ public class BookService {
                     return result;
                 }
                 BookModel searchBookModel = new BookModel(booklist.getBookName(), booklist.getWriter(), booklist.getIsbn(), booklist.getAmount(), booklist.getState());
-                BookRepository.callsearchWriter(searchBookModel);
+                BookRepository.searchWriter(searchBookModel);
 
                 Writer = booklist.getWriter();
                 Bookname = booklist.getBookName();
@@ -87,6 +87,8 @@ public class BookService {
                     result = 2;
                     return result;
                 }
+                BookModel searchBookModel = new BookModel(booklist.getBookName(), booklist.getWriter(), booklist.getIsbn(), booklist.getAmount(), booklist.getState());
+                BookRepository.searchBookName(searchBookModel);
                 Writer = booklist.getWriter();
                 Bookname = booklist.getBookName();
 

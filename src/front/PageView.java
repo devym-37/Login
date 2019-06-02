@@ -47,10 +47,15 @@ public class PageView {
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 
-    public static void rentpage3(){
+    public static void rentsuccess(){
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t1. Rent a Book  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. Return Booklist Page  \t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\tBook rental is Complete  \t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+    }
+
+    public static void returnsuccess(){
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\tReturn books successfully  \t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 

@@ -35,7 +35,7 @@ public class BookView {
         System.out.printf("|\t\t  %s\t\t\t\t\t%s\t\t\t\t\t\t\t\t\t\t\t\t  %s\t\t\t|%n",
                 ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getIsbn());
 
-        for(int i = 5; i < booklist.size(); i++){
+        for (int i = 5; i < booklist.size(); i++) {
             Object list = booklist.get(i);
             System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%-13s\t\t\t|%n",
                     ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
@@ -79,7 +79,7 @@ public class BookView {
                     ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getAmount());
         }
 
-        for(int i = 5; i < booklist.size(); i++){
+        for (int i = 5; i < booklist.size(); i++) {
             Object list = booklist.get(i);
             System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
                     ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
@@ -122,14 +122,14 @@ public class BookView {
             System.out.printf("|\t\t  %s\t\t\t\t\t\t\t\t  %s\t\t\t\t\t\t\t\t\t\t  %s  \t\t\t\t|%n",
                     ((BookModel) list4).getWriter(), ((BookModel) list4).getBookName(), ((BookModel) list4).getAmount());
         }
-        for(int i = 5; i < booklist.size(); i++){
+        for (int i = 5; i < booklist.size(); i++) {
             Object list = booklist.get(i);
             System.out.printf("|\t\t  %-28s%-20s\t\t\t\t\t\t\t\t%10s\t\t\t|%n",
                     ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getIsbn());
         }
     }
 
-    public void enrollBook(){
+    public void enrollBook() {
 
         BookService bookService = new BookService();
         Scanner scanner = new Scanner(System.in);
@@ -149,7 +149,7 @@ public class BookView {
         Amount = scanner.nextLine();
 
         int response = bookService.saveBook(Writer, BookName, Isbn, Amount, State);
-        switch (response){
+        switch (response) {
             case 0:                     // 이미 있는 책
                 PageView.adminpage3();
                 enrollBook();
@@ -158,10 +158,13 @@ public class BookView {
                 PageView.adminpage();
                 addBook();
                 break;
+            default:
+                PageView.inputError();
+                break;
         }
     }
 
-    public void addBook(){
+    public void addBook() {
         BookView bookView = new BookView();
         BookService bookService = new BookService();
 
@@ -172,7 +175,7 @@ public class BookView {
         System.out.print("\t\t\tEnter Input Key (Y/N) : ");
         value = scanner.nextLine();
         int response = bookService.enrollBook(value);
-        switch (response){
+        switch (response) {
             case 0:
                 PageView.inputError();
                 addBook();
@@ -182,9 +185,11 @@ public class BookView {
                 break;
             case 2:
                 break;
+            default:
+                PageView.inputError();
+                break;
         }
     }
-
 
 
     public void search_Writer() {                    // 책 저자로 검색
@@ -203,6 +208,9 @@ public class BookView {
             case 1:             // 검색한 책 있음
                 break;
             case 2:             // 검색한 책 대여중
+                break;
+            default:
+                PageView.inputError();
                 break;
         }
     }
@@ -223,9 +231,11 @@ public class BookView {
                 break;
             case 2:             // 검색한 책 대여중
                 break;
+            default:
+                PageView.inputError();
+                break;
         }
     }
-
 
 
 }

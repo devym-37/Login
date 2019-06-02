@@ -126,13 +126,13 @@ public class ModuleView {
                     rentView.curr_rentView();
                     break;
                 case 5:                 // return book
-
+                    rentView.returnbook();
                     break;
                 case 6:
                     registerView.logout_User();
                     break;
                 default:
-                    PageView.inputError();
+                    FrontView.error_front();
                     break;
             }
         }
