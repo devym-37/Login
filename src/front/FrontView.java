@@ -62,7 +62,7 @@ public class FrontView {
     public static void Off_front(){
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t !!  Program Off - Good Bye  !!\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t !!  Program Off - Good Bye  !!\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
 
     }

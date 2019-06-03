@@ -1,18 +1,20 @@
 package service;
 
+import front.PageView;
 import model.BookModel;
 import model.RentModel;
 import model.UserModel;
 import repository.UserRepository;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class RentService {
     UserRepository rentRepository = new UserRepository();
 
-    public int saveRent(String Id, String Writer, String BookName, String Amount) {
+    public int saveRent(String Id, String Writer, String BookName, String Amount, String Isbn) {
         List<RentModel> check_rent = rentRepository.findrent();
-        RentModel newRent = new RentModel(Id, Writer, BookName, Amount);
+        RentModel newRent = new RentModel(Id, Writer, BookName, Amount, Isbn);
         rentRepository.saveRent(newRent);
         return 1;
     }
@@ -38,6 +40,7 @@ public class RentService {
                     rentUser1.setWriter(bookModel.getWriter());
                     rentUser1.setBookName(bookModel.getBookName());
                     rentUser1.setAmount(State);
+                    rentUser1.setIsbn(bookModel.getIsbn());
                     bookModel.setState(State);
                     bookModel.setAmount(Amount);
                     rentRepository.saveRent(rentUser1);
@@ -61,27 +64,30 @@ public class RentService {
         String nonValue = "N";
         String Amount = "1";
         String State = "Rentable";
-        int listsize = returnrentModel.size();
+        String returnIsbn = null;
+
+        Scanner scanner = new Scanner(System.in);
+
 
         if (Value.equalsIgnoreCase(value.toLowerCase())) {
-            for (BookModel bookModel : returnbookmodel) {
-                for (RentModel rentModel : returnrentModel) {
-                    if (!bookModel.getAmount().equals(State) && rentModel.getId().equals(currentUserModel.getId())) {
-                        if(multiReturn()) {
-                            bookModel.setAmount(Amount);
-                            bookModel.setState(State);
-                            return 2;
-                        }else{
-                            bookModel.setAmount(Amount);
-                            bookModel.setState(State);
-
-                            return 1;
-                        }
-                    }
+            PageView.returnpage2();
+            System.out.print("\t\t\tEnter the ISBN of the book you want to return : ");
+            returnIsbn = scanner.nextLine();
+            for (BookModel bookmodel : returnbookmodel) {
+                if(bookmodel.getIsbn().contains(returnIsbn)){
+                    bookmodel.setAmount(Amount);
+                    bookmodel.setState(State);
                 }
             }
-        } else if (nonValue.equalsIgnoreCase(value.toLowerCase())) {
-            return 3;
+            for (int i = 0; i < returnrentModel.size(); i++) {
+                if (returnrentModel.get(i).getIsbn().contains(returnIsbn)
+                        && returnrentModel.get(i).getId().equals(currentUserModel.getId())) {
+                    returnrentModel.remove(i);
+                    return 1;
+                }
+            }
+        }else if (nonValue.equalsIgnoreCase(value.toLowerCase())) {
+            return 2;
         }
         return 0;
     }
@@ -96,14 +102,14 @@ public class RentService {
         String State = "On loan";
         for (BookModel bookmodel : returnbookmodel) {
             for (RentModel rentmodel : returnrentModel) {
-                if(bookmodel.getState().equals(State) && rentmodel.getId().equals(currentUserModel.getId())){
+                if (bookmodel.getState().equals(State) && rentmodel.getId().equals(currentUserModel.getId())) {
                     count++;
                 }
             }
         }
-        if(count > 1){
+        if (count > 1) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }

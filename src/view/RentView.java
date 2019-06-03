@@ -2,6 +2,7 @@ package view;
 
 import front.PageView;
 import model.RentModel;
+import model.UserModel;
 import repository.UserRepository;
 import service.RentService;
 
@@ -22,9 +23,31 @@ public class RentView {
 
         for (int i = 0; i < rentmodel.size(); i++) {
             Object list = rentmodel.get(i);
-            System.out.printf("\t\t\t\t\t%-10s            \t\t\t%s\t\t\t\t\t\t%s\t\t\t%n",
+            System.out.printf("\t\t\t\t\t%-10s            \t\t\t%-10s\t\t\t\t%s\t\t\t%n",
                     ((RentModel) list).getId(), ((RentModel) list).getWriter(), ((RentModel) list).getBookName());
         }
+    }
+
+    public void currRentedview() {
+        UserRepository rentRepository = new UserRepository();
+        List<RentModel> currrentmodel = rentRepository.findrent();
+        UserModel currentUserModel = rentRepository.currentUser();
+
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\tBook List\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\tWriter\t\t\t\t\t\t\t\tBook Name\t\t\t\t\t\t\t\t\tISBN\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+
+
+        for (int i = 0; i < currrentmodel.size(); i++) {
+            if (currrentmodel.get(i).getId().equals(currentUserModel.getId())) {
+                Object list = currrentmodel.get(i);
+                System.out.printf("\t\t\t\t%-10s           \t%-20s\t\t\t\t\t%-20s\t\t\t%n",
+                        ((RentModel) list).getWriter(), ((RentModel) list).getBookName(), ((RentModel) list).getIsbn());
+            }
+        }
+
+
     }
 
     public void rentbook() {
@@ -58,29 +81,29 @@ public class RentView {
         Scanner scanner = new Scanner(System.in);
         String value = null;
 
+
+        PageView.returnpage1();
+
         System.out.print("\t\t\twill you return this book ? (Y/N) : ");
         value = scanner.nextLine();
+
+
         int response = rentService.returnBook(value);
         switch (response) {
             case 0:
                 PageView.inputError();
                 break;
-            case 1:                         // 1권만 대여중일때
+            case 1:                         // 반납성공
                 PageView.returnsuccess();
                 ModuleView.bookrent();
                 break;
-            case 2:                         // 1권 이상 대여중일때
-                PageView.returnsuccess();
-                ModuleView.bookrent();
-                break;
-            case 3:                         // 반납 안함
+            case 2:                         // 반납안함
                 ModuleView.bookrent();
                 break;
             default:
                 PageView.inputError();
                 break;
         }
-
     }
 
 }

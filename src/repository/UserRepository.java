@@ -53,6 +53,10 @@ public class UserRepository {
         LoginDB.loginUser.setName(null);
     }
 
+    public void setReturnbook(){
+
+    }
+
     public BookModel callsearchBookName() { return LoginDB.searchBook; }
 
     public List<UserModel> findUser() {           // List<UserModel> 반환해야할 정보 List

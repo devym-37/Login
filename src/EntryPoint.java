@@ -1,4 +1,5 @@
 import DB.LocalDB;
+import front.PageView;
 import model.BookModel;
 import model.RentModel;
 import model.UserModel;
@@ -43,6 +44,7 @@ public class EntryPoint {
         currRent.setWriter(Writer[1]);
         currRent.setBookName(BookName[1]);
         currRent.setAmount(Amount[1]);
+        currRent.setIsbn(Isbn[1]);
         LocalDB.rentlist.add(currRent);
 
         RentModel currRent1 = new RentModel();
@@ -50,6 +52,7 @@ public class EntryPoint {
         currRent1.setWriter(Writer[3]);
         currRent1.setBookName(BookName[3]);
         currRent1.setAmount(Amount[3]);
+        currRent1.setIsbn(Isbn[3]);
         LocalDB.rentlist.add(currRent1);
 
 

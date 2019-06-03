@@ -6,19 +6,21 @@ public class RentModel {
     private String Writer;
     private String BookName;
     private String Amount;
+    private String Isbn;
 
     public RentModel() {}
 
-    public RentModel(String Id, String Writer, String BookName, String Amount){
-        this.Id = Id;
-        this.Writer = Writer;
-        this.BookName = BookName;
-        this.Amount = Amount;
+    public RentModel(String id, String writer, String bookName, String amount, String isbn) {
+        Id = id;
+        Writer = writer;
+        BookName = bookName;
+        Amount = amount;
+        Isbn = isbn;
     }
 
     public String getId() { return Id; }
 
-    public void setId(String Id) { this.Id = Id; }
+    public void setId(String id) { Id = id; }
 
     public String getWriter() { return Writer; }
 
@@ -32,6 +34,10 @@ public class RentModel {
 
     public void setAmount(String amount) { Amount = amount; }
 
+    public String getIsbn() { return Isbn; }
+
+    public void setIsbn(String isbn) { Isbn = isbn; }
+
     @Override
     public String toString() {
         return "RentModel{" +
@@ -39,6 +45,7 @@ public class RentModel {
                 ", Writer='" + Writer + '\'' +
                 ", BookName='" + BookName + '\'' +
                 ", Amount='" + Amount + '\'' +
+                ", Isbn='" + Isbn + '\'' +
                 '}';
     }
 }

@@ -89,4 +89,16 @@ public class PageView {
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 
+    public static void returnpage1(){
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t  List of books you are renting. \t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+    }
+
+    public static void returnpage2(){
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t  Return in progress \t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+    }
+
 }

@@ -126,6 +126,7 @@ public class ModuleView {
                     rentView.curr_rentView();
                     break;
                 case 5:                 // return book
+                    rentView.currRentedview();
                     rentView.returnbook();
                     break;
                 case 6:
