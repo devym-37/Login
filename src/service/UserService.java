@@ -1,7 +1,7 @@
 package service;
 
 
-import front.FrontView;
+import view.FrontView;
 import model.UserModel;
 import repository.UserRepository;
 
@@ -25,10 +25,10 @@ public class UserService {
         for (UserModel model : check_List) {
             if (id.equals(model.getId())) {
                 return 1;                                          // 값만 반환하고 기능 정지
-            } else if (name.equals(model.getName())) {
+            } else if (password.equals(model.getPassword())) {
                 return 2;
             } else if (email.equals(model.getEmail())) {
-                return 3;
+                return 2;
             }
         }
 
@@ -59,6 +59,8 @@ public class UserService {
                 return result;          // 3. 똑같은 id가 있으면, pwd 확인 pwd 틀림
             } else if (id.equals(adId)) {
                 if (password.equals(adPwd)) {
+                    UserModel currentUser = new UserModel(id, password, null, null);
+                    userRepository.loginUser(currentUser);
                     result = 3;
                     return result;          // 4. 관리자 ID 확인
                 }

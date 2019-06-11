@@ -1,14 +1,15 @@
 package service;
 
-import front.PageView;
+import repository.BookRepository;
+import view.PageView;
 import model.BookModel;
-import repository.UserRepository;
+
 
 import java.util.List;
 
 public class BookService {
-    UserRepository BookRepository = new UserRepository();
-    List<BookModel> Booklist = BookRepository.findbook();
+    BookRepository bookRepository = new BookRepository();
+    List<BookModel> Booklist = bookRepository.findbook();
     public int saveBook(String Writer, String BookName, String Isbn, String Amount, String State){
 
         for (BookModel Book : Booklist) {
@@ -18,7 +19,7 @@ public class BookService {
             }
         }
         BookModel newBook = new BookModel(Writer, BookName, Isbn, Amount, State);
-        BookRepository.saveBook(newBook);
+        bookRepository.saveBook(newBook);
 
         return 1;                   // 새로운 책 등록
     }
@@ -35,17 +36,18 @@ public class BookService {
         }else if(nonValue.equalsIgnoreCase(value.toLowerCase())){
             return 2;
         }
-
         return  result;
     }
 
 
     public int search_writer(String writer){          // 책 검색
-        List<BookModel> check_book = BookRepository.findbook();
+        List<BookModel> check_book = bookRepository.findbook();
         int result = 0;                 // 0 : 책 없음, 1 : 책 있음, 2 : 책 대여중
 
         String Writer = null;
         String Bookname = null;
+        String Isbn = null;
+
         String caseWriter = writer.toLowerCase();
         String state = "On loan";
         for (BookModel booklist : check_book) {
@@ -55,16 +57,17 @@ public class BookService {
                     result = 2;
                     return result;
                 }
-                BookModel searchBookModel = new BookModel(booklist.getBookName(), booklist.getWriter(), booklist.getIsbn(), booklist.getAmount(), booklist.getState());
-                BookRepository.searchWriter(searchBookModel);
 
                 Writer = booklist.getWriter();
                 Bookname = booklist.getBookName();
+                Isbn = booklist.getIsbn();
+
                 System.out.println("┌─────────────────────────────────────────────────────────────┐");
                 System.out.println("│\t\t\t\t\t\t\t\t\t\t\tIt's a book in our library\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
                 System.out.println("└─────────────────────────────────────────────────────────────┘");
-                System.out.print("\t\t\t\t\t\t\t\t\t\tWriter : " + Writer);
-                System.out.println("\t\t\tBook Name : " + Bookname);
+                System.out.print("\t\t\t\t\tWriter : " + Writer);
+                System.out.print("\t\t\tBook Name : " + Bookname);
+                System.out.println("\t\t\tBook ISBN : " + Isbn);
 
                 result = 1;
                 return result;
@@ -74,10 +77,13 @@ public class BookService {
     }
 
     public int search_bookname(String bookname){          // 책 검색
-        List<BookModel> check_book = BookRepository.findbook();
+        List<BookModel> check_book = bookRepository.findbook();
         int result = 0;                 // 0 : 책 없음, 1 : 책 있음, 2 : 책 대여중
+
         String Writer = null;
         String Bookname = null;
+        String Isbn = null;
+
         String caseBookname = bookname.toLowerCase();
         String state = "On loan";
         for (BookModel booklist : check_book) {
@@ -87,16 +93,17 @@ public class BookService {
                     result = 2;
                     return result;
                 }
-                BookModel searchBookModel = new BookModel(booklist.getBookName(), booklist.getWriter(), booklist.getIsbn(), booklist.getAmount(), booklist.getState());
-                BookRepository.searchBookName(searchBookModel);
+
                 Writer = booklist.getWriter();
                 Bookname = booklist.getBookName();
+                Isbn = booklist.getIsbn();
 
                 System.out.println("┌─────────────────────────────────────────────────────────────┐");
                 System.out.println("│\t\t\t\t\t\t\t\t\t\t\tIt's a book in our library\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
                 System.out.println("└─────────────────────────────────────────────────────────────┘");
-                System.out.print("\t\t\t\t\t\t\t\t\t\tWriter : " + Writer);
-                System.out.println("\t\t\tBook Name : " + Bookname);
+                System.out.print("\t\t\t\t\tWriter : " + Writer);
+                System.out.print("\t\t\tBook Name : " + Bookname);
+                System.out.println("\t\t\tBook ISBN : " + Isbn);
 
                 result = 1;
                 return result;
@@ -106,7 +113,5 @@ public class BookService {
     }
 
 
-
-
-
 }
+

@@ -2,8 +2,6 @@ package repository;
 
 import DB.LocalDB;
 import DB.LoginDB;
-import model.BookModel;
-import model.RentModel;
 import model.UserModel;
 
 import java.util.List;
@@ -18,27 +16,8 @@ public class UserRepository {
         return 0;
     }
 
-    public int saveBook(BookModel bookModel) {
-        LocalDB.booklist.add(bookModel);
-        return 0;
-    }
-
-    public int saveRent(RentModel rentModel) {
-        LocalDB.rentlist.add(rentModel);
-        return 0;
-    }
-
     public int loginUser(UserModel userModel){
         LoginDB.loginUser = userModel;
-        return 0;
-    }
-    public int searchWriter(BookModel bookModel){
-        LoginDB.searchBook = bookModel;
-        return 0;
-    }
-
-    public int searchBookName(BookModel bookModel){
-        LoginDB.searchBook = bookModel;
         return 0;
     }
 
@@ -53,20 +32,8 @@ public class UserRepository {
         LoginDB.loginUser.setName(null);
     }
 
-    public void setReturnbook(){
-
-    }
-
-    public BookModel callsearchBookName() { return LoginDB.searchBook; }
-
     public List<UserModel> findUser() {           // List<UserModel> 반환해야할 정보 List
         return LocalDB.userlist;
     }
-
-    public List<BookModel> findbook() {
-        return LocalDB.booklist;
-    }           // List<booklist> 반환해야할 정보 List
-
-    public List<RentModel> findrent() { return LocalDB.rentlist; }
 
 }

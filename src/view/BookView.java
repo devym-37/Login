@@ -1,7 +1,7 @@
 package view;
 
-import front.PageView;
 import model.BookModel;
+import repository.BookRepository;
 import repository.UserRepository;
 import service.BookService;
 
@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookView {
-    UserRepository userRepository = new UserRepository();
+    BookRepository bookRepository = new BookRepository();
 
     public void currentBookView() {
-        List<BookModel> booklist = userRepository.findbook();
+        List<BookModel> booklist = bookRepository.findbook();
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t\tBook List\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
@@ -43,7 +43,7 @@ public class BookView {
     }
 
     public void rentalList() {
-        List<BookModel> booklist = userRepository.findbook();
+        List<BookModel> booklist = bookRepository.findbook();
 
         String state = "Rentable";
 
@@ -80,14 +80,16 @@ public class BookView {
         }
 
         for (int i = 5; i < booklist.size(); i++) {
-            Object list = booklist.get(i);
-            System.out.printf("|\t\t  %-28s    %-20s\t\t\t\t\t%10s\t\t\t%n",
-                    ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getAmount());
+            if (booklist.get(i).getState().equals(state) && booklist.get(i).getAmount().equals("1")) {
+                Object list = booklist.get(i);
+                System.out.printf("|\t\t  %-28s    %-20s\t\t\t\t\t%10s\t\t\t%n",
+                        ((BookModel) list).getWriter(), ((BookModel) list).getBookName(), ((BookModel) list).getAmount());
+            }
         }
     }
 
     public void onloanList() {
-        List<BookModel> booklist = userRepository.findbook();
+        List<BookModel> booklist = bookRepository.findbook();
 
         String state = "On loan";
 
@@ -139,7 +141,7 @@ public class BookView {
         String Writer = null;
         String BookName = null;
         String Isbn = null;
-        String Amount = null;
+        String Amount = "1";
         String State = "Rentable";
 
         System.out.print("\t\t\tEnroll Writer : ");
@@ -148,8 +150,6 @@ public class BookView {
         BookName = scanner.nextLine();
         System.out.print("\t\t\tEnroll Isbn : ");
         Isbn = scanner.nextLine();
-        System.out.print("\t\t\tEnroll Amount : ");
-        Amount = scanner.nextLine();
 
         int response = bookService.saveBook(Writer, BookName, Isbn, Amount, State);
         switch (response) {
@@ -170,10 +170,12 @@ public class BookView {
     public void addBook() {
         BookView bookView = new BookView();
         BookService bookService = new BookService();
+        UserRepository userRepository = new UserRepository();
 
         Scanner scanner = new Scanner(System.in);
 
         String value = null;
+
         PageView.adminpage2();
         System.out.print("\t\t\tEnter Input Key (Y/N) : ");
         value = scanner.nextLine();
@@ -186,7 +188,10 @@ public class BookView {
             case 1:
                 bookView.enrollBook();
                 break;
-            case 2:
+            case 2:                     // N입력시 amdin ID 자동 logout실행
+                userRepository.setLogout();
+                FrontView.logoutSuccess();
+                ModuleView.execute_program();
                 break;
             default:
                 PageView.inputError();
@@ -207,10 +212,12 @@ public class BookView {
         switch (response) {
             case 0:             // 검색한 책 없음
                 PageView.nowriterbook();
+                ModuleView.searchbook();
                 break;
             case 1:             // 검색한 책 있음
                 break;
             case 2:             // 검색한 책 대여중
+                ModuleView.searchbook();
                 break;
             default:
                 PageView.inputError();
@@ -229,10 +236,12 @@ public class BookView {
         switch (response) {
             case 0:             // 검색한 책 없음
                 PageView.nobookname();
+                ModuleView.searchbook();
                 break;
             case 1:             // 검색한 책 있음
                 break;
             case 2:             // 검색한 책 대여중
+                ModuleView.searchbook();
                 break;
             default:
                 PageView.inputError();

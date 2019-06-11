@@ -1,8 +1,5 @@
 package view;
 
-import front.FrontView;
-import front.PageView;
-
 import java.util.Scanner;
 
 public class ModuleView {
@@ -107,7 +104,6 @@ public class ModuleView {
                 case 0:                 // book list
                     bookView.currentBookView();
                     returnlistView();                   //rent service
-                    loop = false;
                     break;
                 case 1:                 // rentable booklist
                     bookView.rentalList();
@@ -124,6 +120,7 @@ public class ModuleView {
                     break;
                 case 4:                 // book borrow
                     rentView.curr_rentView();
+                    returnlistView();
                     break;
                 case 5:                 // return book
                     rentView.currRentedview();
@@ -158,6 +155,9 @@ public class ModuleView {
                     bookView.search_Bookname();
                     searchRentView();
                     break;
+                case 3:
+                    bookrent();
+                    break;
                 default:
                     PageView.inputError();
                     break;
@@ -191,7 +191,7 @@ public class ModuleView {
     }
 
     public static void returnlistView() {
-        BookView bookView = new BookView();
+        RegisterView registerView = new RegisterView();
         int menuNum = 0;
         boolean loop = true;
 
@@ -205,8 +205,7 @@ public class ModuleView {
                     bookrent();
                     break;
                 case 2:
-                    FrontView.Off_front();
-                    loop = false;
+                    registerView.logout_User();
                     break;
                 default:
                     PageView.inputError();
@@ -217,8 +216,8 @@ public class ModuleView {
 
 
     public static void searchRentView() {
-        BookView bookView = new BookView();
         RentView rentView = new RentView();
+
         int menuNum = 0;
         boolean loop = true;
 
@@ -232,7 +231,7 @@ public class ModuleView {
                     rentView.rentbook();
                     break;
                 case 2:
-                    bookView.currentBookView();
+                    bookrent();
                     break;
                 default:
                     PageView.inputError();

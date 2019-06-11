@@ -1,4 +1,4 @@
-package front;
+package view;
 
 public class PageView {
 
@@ -18,6 +18,7 @@ public class PageView {
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t1. Search by author   \t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t2. Search by bookname \t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t3. Return Page  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 
@@ -44,6 +45,12 @@ public class PageView {
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t1. Rent a Book  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t2. Return Page  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└─────────────────────────────────────────────────────────────┘");
+    }
+
+    public static void rentpage3(){
+        System.out.println("┌─────────────────────────────────────────────────────────────┐");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t\t  Rental in progress \t\t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
     }
 

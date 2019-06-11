@@ -1,7 +1,5 @@
 package view;
 
-import front.FrontView;
-import front.PageView;
 import service.UserService;
 
 import java.util.Scanner;
@@ -39,7 +37,7 @@ public class RegisterView {
             FrontView.existing_ID();
         }
         if (response == 2) {
-            FrontView.existing_name();
+            FrontView.existing_password();
         }
         if (response == 3) {
             FrontView.existing_email();

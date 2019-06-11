@@ -1,4 +1,4 @@
-package front;
+package view;
 
 public class FrontView {
 
@@ -91,10 +91,10 @@ public class FrontView {
 
     }
 
-    public static void existing_name(){
+    public static void existing_password(){
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t!!   Already existing Name   !!\t\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t\t!!   Already existing Password   !!\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
 
     }
