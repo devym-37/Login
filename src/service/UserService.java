@@ -16,6 +16,7 @@ import java.util.List;
 // 4. 결과값 반환
 
 public class UserService {
+
     UserRepository userRepository = new UserRepository();
 
     public int saveUser(String id, String password, String name, String email) {
@@ -28,7 +29,7 @@ public class UserService {
             } else if (password.equals(model.getPassword())) {
                 return 2;
             } else if (email.equals(model.getEmail())) {
-                return 2;
+                return 3;
             }
         }
 
