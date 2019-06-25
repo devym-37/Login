@@ -49,7 +49,14 @@ public class UserService {
 
         // 2. userList를 돌며, id확인
         for (UserModel model : check_list) {
-            if (id.equals(model.getId())) {
+            if (id.equals(adId)) {
+                if (password.equals(adPwd)) {
+                    UserModel currentUser = new UserModel(id, password, null, null);
+                    userRepository.loginUser(currentUser);
+                    result = 3;
+                    return result;          // 4. 관리자 ID 확인
+                }
+            } else if (id.equals(model.getId())) {
                 if (password.equals(model.getPassword())) {
                     UserModel currentUser = new UserModel(id, password, null, null);
                     userRepository.loginUser(currentUser);
@@ -58,76 +65,70 @@ public class UserService {
                 }
                 result = 1;
                 return result;          // 3. 똑같은 id가 있으면, pwd 확인 pwd 틀림
-            } else if (id.equals(adId)) {
-                if (password.equals(adPwd)) {
-                    UserModel currentUser = new UserModel(id, password, null, null);
-                    userRepository.loginUser(currentUser);
-                    result = 3;
-                    return result;          // 4. 관리자 ID 확인
-                }
             }
+
         }
         return result;// 4. 결과값 반환
     }
 
-    public int logoutUser(String value) {
-        int result = 0;
+        public int logoutUser (String value){
+            int result = 0;
 
-        String Value = "Y";
-        String nonValue = "N";
+            String Value = "Y";
+            String nonValue = "N";
 
-        if (Value.equalsIgnoreCase(value.toLowerCase())) {
-            userRepository.setLogout();
-            return 1;
-        } else if (nonValue.equalsIgnoreCase(value.toLowerCase())) {
-            return 2;
-        }
-        return result;
-    }
-
-
-    public int findUser(String name, String email) {
-        int result = 0;         // 0 : 동일한 이름과 email없음 1: id / pwd 반환
-        // 1. userList를 가져온다.
-        List<UserModel> findUser = userRepository.findUser();
-        // 2. userList를 돌며, 이름과 email 확인
-        String ID = null;
-        String Pwd = null;
-        for (UserModel model : findUser) {
-            if (name.equals(model.getName()) && email.equals(model.getEmail())) {
-                result = 1;
-                ID = model.getId();
-                Pwd = model.getPassword();
-                FrontView.existIDPWD();
-                System.out.println("\t\t\tYour ID : " + ID);
-                System.out.println("\t\t\tYour Password : " + Pwd);
-                return result;                  // id / pwd 반환
+            if (Value.equalsIgnoreCase(value.toLowerCase())) {
+                userRepository.setLogout();
+                return 1;
+            } else if (nonValue.equalsIgnoreCase(value.toLowerCase())) {
+                return 2;
             }
+            return result;
         }
-        // 3. 똑같은 이름과 email이 있으면 id / pwd 반환환
-        return result;                      // 입력받은 이름과 email 데이터 없음
-    }
 
-    public int removeUser(String name, String id, String password) {
-        int result = 0;         // 0 : 입력한 내용의 data가 없음
-        List<UserModel> removeUser = userRepository.findUser();
-        Iterator<UserModel> itUser = removeUser.iterator();
-        String Name = null;
-        String Id = null;
-        String Pwd = null;
-        Name = name;
-        Id = id;
-        Pwd = password;
-        while (itUser.hasNext()) {
-            UserModel value = itUser.next();
-            if (Name.equals(value.getName()) && Id.equals(value.getId()) && Pwd.equals(value.getPassword())) {
-                result = 1;          // 1 : date delete
-                itUser.remove();
-                return result;
+
+        public int findUser (String name, String email){
+            int result = 0;         // 0 : 동일한 이름과 email없음 1: id / pwd 반환
+            // 1. userList를 가져온다.
+            List<UserModel> findUser = userRepository.findUser();
+            // 2. userList를 돌며, 이름과 email 확인
+            String ID = null;
+            String Pwd = null;
+            for (UserModel model : findUser) {
+                if (name.equals(model.getName()) && email.equals(model.getEmail())) {
+                    result = 1;
+                    ID = model.getId();
+                    Pwd = model.getPassword();
+                    FrontView.existIDPWD();
+                    System.out.println("\t\t\tYour ID : " + ID);
+                    System.out.println("\t\t\tYour Password : " + Pwd);
+                    return result;                  // id / pwd 반환
+                }
             }
+            // 3. 똑같은 이름과 email이 있으면 id / pwd 반환환
+            return result;                      // 입력받은 이름과 email 데이터 없음
         }
-        return result;               // result = 0;
+
+        public int removeUser (String name, String id, String password){
+            int result = 0;         // 0 : 입력한 내용의 data가 없음
+            List<UserModel> removeUser = userRepository.findUser();
+            Iterator<UserModel> itUser = removeUser.iterator();
+            String Name = null;
+            String Id = null;
+            String Pwd = null;
+            Name = name;
+            Id = id;
+            Pwd = password;
+            while (itUser.hasNext()) {
+                UserModel value = itUser.next();
+                if (Name.equals(value.getName()) && Id.equals(value.getId()) && Pwd.equals(value.getPassword())) {
+                    result = 1;          // 1 : date delete
+                    itUser.remove();
+                    return result;
+                }
+            }
+            return result;               // result = 0;
+        }
+
+
     }
-
-
-}

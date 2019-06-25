@@ -190,4 +190,110 @@ public class UserServiceTest {
         assertThat(result, is(2));
     }
 
+    @Test
+    public void findUser_return0(){
+        // given
+        String name = "thor";
+        String email = "thor@naver.com";
+
+        String testName = "temp";
+        String testEmail = "temp@naver.com";
+
+        UserModel userModel = new UserModel();
+        userModel.setName(name);
+        userModel.setEmail(email);
+
+        List<UserModel> userModelList = new ArrayList<>();
+        userModelList.add(userModel);
+
+        given(userRepository.findUser()).willReturn(userModelList);
+
+        // when
+        int result = userService.findUser(testName, testEmail);
+
+        // then
+        assertThat(result, is(0));
+
+    }
+
+    @Test
+    public void findUser_return1(){
+        // given
+        String name = "thor";
+        String email = "thor@naver.com";
+        String id = "thor";
+        String password = "thor123";
+
+        UserModel userModel = new UserModel();
+        userModel.setName(name);
+        userModel.setEmail(email);
+        userModel.setId(id);
+        userModel.setPassword(password);
+
+        List<UserModel> userModelList = new ArrayList<>();
+        userModelList.add(userModel);
+
+        given(userRepository.findUser()).willReturn(userModelList);
+
+        //  when
+        int result = userService.findUser(name, email);
+
+        //  then
+        assertThat(result, is(1));
+    }
+
+    @Test
+    public void removeUser_return0(){
+        //  given
+        String id = "thor";
+        String name = "thor";
+        String password = "thor123";
+
+        String testId = "temp";
+        String testName = "temp";
+        String testPwd = "tempPassword";
+
+        UserModel userModel = new UserModel();
+        userModel.setId(id);
+        userModel.setName(name);
+        userModel.setPassword(password);
+
+        List<UserModel> userModelList = new ArrayList<>();
+        userModelList.add(userModel);
+
+        given(userRepository.findUser()).willReturn(userModelList);
+
+        //  when
+        int result = userService.removeUser(testName, testId, testPwd);
+
+        //  then
+        assertThat(result, is(0));
+    }
+
+    @Test
+    public void removeUser_return1(){
+        //  given
+        String id = "thor";
+        String name = "thor";
+        String password = "thor123";
+
+
+        UserModel userModel = new UserModel();
+        userModel.setId(id);
+        userModel.setName(name);
+        userModel.setPassword(password);
+
+        List<UserModel> userModelList = new ArrayList<>();
+        userModelList.add(userModel);
+
+        given(userRepository.findUser()).willReturn(userModelList);
+
+        //  when
+        int result = userService.removeUser(name, id, password);
+
+        //  then
+        assertThat(result, is(1));
+
+    }
+
 }

@@ -161,7 +161,7 @@ public class FrontView {
     public static void existIDPWD(){
 
         System.out.println("┌─────────────────────────────────────────────────────────────┐");
-        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t !!  Here is your ID and Pwd.  !!  \t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│\t\t\t\t\t\t\t\t\t\t\t !!  Here is your ID and Pwd.  !!  \t\t\t\t\t\t\t\t\t\t\t\t│");
         System.out.println("└─────────────────────────────────────────────────────────────┘");
 
     }
