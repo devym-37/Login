@@ -55,7 +55,7 @@ public class BookService {
                 if(state.equals(booklist.getState())){
                     PageView.rentpage4();
                     result = 2;
-                    return result;
+                    return result;              // current rented
                 }
 
                 Writer = booklist.getWriter();

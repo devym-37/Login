@@ -101,29 +101,4 @@ public class RentService {
         }
     }               // 반납 기능
 
-
-
-    public boolean multiReturn() {
-
-        List<BookModel> returnbookmodel = bookRepository.findbook();
-        List<RentModel> returnrentModel = rentRepository.findrent();
-        UserModel currentUserModel = userRepository.currentUser();
-
-        int count = 0;
-        String State = "On loan";
-        for (BookModel bookmodel : returnbookmodel) {
-            for (RentModel rentmodel : returnrentModel) {
-                if (bookmodel.getState().equals(State) && rentmodel.getId().equals(currentUserModel.getId())) {
-                    count++;
-                }
-            }
-        }
-        if (count > 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
 }
